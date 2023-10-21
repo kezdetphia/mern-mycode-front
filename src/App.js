@@ -6,7 +6,7 @@ import Navbar from './Components/Navbar'
 
 function App() {
   return (
-    <div className=''>
+    <div className='bg-background h-screen'>
       <BrowserRouter>
       <Navbar />
         <div className='pages'>

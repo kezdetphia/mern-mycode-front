@@ -22,7 +22,7 @@ const Home = () => {
     <div className="Home">
       <div className="workouts">
         {workouts &&
-          workouts.map((workout) => <WorkoutDetails key={workout.id} workout={workout} />)}
+          workouts.map((workout) => <WorkoutDetails key={workout._id} workout={workout} />)}
       </div>
     </div>
   );
