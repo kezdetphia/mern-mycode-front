@@ -38,7 +38,7 @@ const WorkoutForm = () => {
 
   return (
     // <div className=" flex justify-center ">
-      <div className="flex flex-col justify-center mx-auto w-96 shadow-lg shadow-darkgray  ">
+      <div className="flex flex-col justify-center  mx-auto shadow-lg shadow-darkgray  ">
         <form className="flex flex-col mx-7 my-4 " onSubmit={(e) => handleSubmit(e)}>
           <label className="text-lightgray">Title</label>
           <input
@@ -66,8 +66,8 @@ const WorkoutForm = () => {
             className="mb-3 pl-1"
           />
 
-          <div className="flex justify-center ">
-          <button className="rounded-lg bg-stone-400 px-4 py-1" type="submit">Submit</button>
+          <div className="flex justify-center items-center ">
+          <button className="rounded-lg bg-stone-400 px-4 py-1" type="submit">Add Workout</button>
           </div>
         </form>
       </div>
