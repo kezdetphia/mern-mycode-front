@@ -5,7 +5,7 @@ import Home from './Pages/Home'
 import Navbar from './Components/Navbar'
 import WorkoutForm from "./Components/WorkoutForm"
 
-// import useReducerPractice from "./useReducerPractice";
+// import UseReducerPractice from "./UseReducerPractice";
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path="" element={<Home />} />
             <Route path="/add" element={<WorkoutForm />} />
-            {/* <Route path="/incdec" element={<useReducerPractice />} /> */}
+            {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
           </Routes>
         </div>
       </BrowserRouter>

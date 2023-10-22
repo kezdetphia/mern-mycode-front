@@ -1,52 +1,56 @@
 import React, { useReducer, useState } from "react";
 
-function reduce(state, action) {
+const person = {
+  name: 'mark',
+  age: 23
+}
+
+
+
+
+function reducer(state, action) {
   switch (action.type) {
-    case "INC": {
-      return { ...state, count: state.count + 1 };
-    }
-    case "ADDNAME": {
-      return { ...state, name: action.name };
-    }
-    default:
-      return state;
+    case "CHANGE_NAME":
+      return {...state, name:action.payload}
+    case "CHANGE_AGE":
+      return { ...state, age: action.payload }
   }
 }
 
-const useReducerPractice = () => {
-  const [useName, setUseName] = useState("noName");
-  const [state, dispatch] = useReducer(reduce, { count: 0, name: "" });
+const UseReducerPractice = () => {
+  const [state, dispatch] = useReducer(reducer, person);
+  const [newName, setNewName] = useState("");
+  const [newAge, setNewAge] = useState("");
 
-  function decrement() {
-    dispatch({ type: "INC" });
-  }
-
-  function addName() {
-    dispatch({ type: "ADDNAME", name: useName });
-  }
-
-  const onMark = () => {
-    setUseName("mark");
-    addName();
+  const addName = () => {
+    dispatch({ type: "CHANGE_NAME", payload: newName });
+    setNewName("");
   };
 
-  const onAndras = () => {
-    setUseName("andras");
-    addName();
+  const addAge = () => {
+    dispatch({ type: "CHANGE_AGE", payload: newAge });
+    setNewAge("");
   };
 
   return (
     <div>
-      <p>{state.count}</p>
-      <button onClick={decrement}>+</button>
+      <p>{state.name}</p>
+      <input
+        type="text"
+        value={newName}
+        onChange={(e) => setNewName(e.target.value)}
+      />
+      <button onClick={addName}>ADD NAME</button>
 
-      <p>name:{state.name} </p>
-      <button onClick={addName}>Add Name</button>
-
-      <button onClick={onMark}>Mark</button>
-      <button onClick={onAndras}>Andras</button>
+      <p>{state.age}</p>
+      <input
+        type="text"
+        value={newAge}
+        onChange={(e) => setNewAge(e.target.value)}
+      />
+      <button onClick={addAge}>ADD AGE</button>
     </div>
   );
 };
 
-export default useReducerPractice;
+export default UseReducerPractice;

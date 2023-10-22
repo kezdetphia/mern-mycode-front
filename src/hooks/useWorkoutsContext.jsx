@@ -9,6 +9,6 @@ export const useWorkoutsContext = () => {
       "useWorkoutsContext must be used inside a WorkoutsContextProvider"
     );
 
-    return context;
   }
+  return context;
 };

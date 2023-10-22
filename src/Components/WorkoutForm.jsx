@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 
 
 const WorkoutForm = () => {
+  const {state, dispatch} = useWorkoutsContext
   
   const initialForm = {
     title: '',
@@ -14,17 +16,19 @@ const WorkoutForm = () => {
   const handleSubmit = async(e) =>{
     try{
       e.preventDefault()
-      const response = await fetch("/api/workouts", {
+      const res = await fetch("/api/workouts", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(workout),
       });
       setWorkout(initialForm);
-
-      if (response.ok){
-        const responseData = await response.json();
+      
+      if (res.ok){
+        const resData = await res.json();
+        console.log('new workout added', resData)
+        dispatch({ type: "CREATE_WORKOUT", payload: resData });
       } else {
-        console.error('Request failed with status: ', response.status)
+        console.error('Request failed with status: ', res.status)
       }
     }catch(err){
       console.log("Error:", err)
