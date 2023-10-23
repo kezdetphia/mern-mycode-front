@@ -20,15 +20,19 @@ const Home = () => {
     fetchWorkout();
   }, [workouts]);
 
+
+
   return (
-    <div className="Home flex my-10">
-      <div className="workouts">
+    <div className="Home flex my-10 w-full space-between">
+
+      <div className="workouts w-full mx-20">
         {workouts &&
           workouts.map((workout) => <WorkoutDetails key={workout._id} workout={workout} />)}
       </div>
-      <div className="">
+      <div className="w-1/2 mx-10">
           <WorkoutForm />
       </div>
+
     </div>
   );
 };
