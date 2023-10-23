@@ -21,10 +21,11 @@ const WorkoutForm = () => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(workout),
       });
-      setWorkout(initialForm);
+      
+      const resData = await res.json();
       
       if (res.ok){
-        const resData = await res.json();
+        setWorkout(initialForm);
         console.log('new workout added', resData)
         dispatch({ type: "CREATE_WORKOUT", payload: resData });
       } else {
