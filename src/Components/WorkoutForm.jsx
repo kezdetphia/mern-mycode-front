@@ -3,7 +3,7 @@ import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 
 
 const WorkoutForm = () => {
-  const {state, dispatch} = useWorkoutsContext
+  const {state, dispatch} = useWorkoutsContext()
   
   const initialForm = {
     title: '',

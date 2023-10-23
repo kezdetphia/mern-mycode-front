@@ -18,7 +18,7 @@ const Home = () => {
       }
     };
     fetchWorkout();
-  }, [workouts]);
+  }, [fetch]);
 
 
 
