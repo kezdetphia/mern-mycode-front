@@ -10,7 +10,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkout = async () => {
-      const response = await fetch("/api/workouts"); //it works without the full url cause proxy base-backend-url was added to the frontend json
+        const response = await fetch(
+          `https://mern-workout-back.onrender.com/api/workouts`
+        );
       const data = await response.json();
 
       if (response.ok) {

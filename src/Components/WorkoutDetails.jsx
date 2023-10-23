@@ -9,9 +9,12 @@ const WorkoutDetails = ({ workout }) => {
   const handleClick = async () => {
     try {
       console.log(workout._id);
-      const res = await fetch(`${process.env.BACKEND_LIVE}/${workout._id}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+`https://mern-workout-back.onrender.com/api/workouts/${workout._id}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (res.ok) {
         const resDatas = await res.json();

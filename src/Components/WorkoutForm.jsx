@@ -18,11 +18,15 @@ const WorkoutForm = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const res = await fetch(process.env.BACKEND_LIVE, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(workout),
-      });
+      
+      const res = await fetch(
+        `https://mern-workout-back.onrender.com/api/workouts`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(workout),
+        }
+      );
 
       const resData = await res.json();
 
