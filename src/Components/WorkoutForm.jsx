@@ -2,17 +2,12 @@ import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 
 const WorkoutForm = () => {
-  const { state, dispatch } = useWorkoutsContext();
+  const {dispatch } = useWorkoutsContext();
 
   const initialForm = {
     title: "",
     reps: "",
     load: "",
-  };
-
-  const classStyle = (name) => {
-    return `mb-7 pl-1  ${
-      (emptyFields.includes(name)) && " border shadow-sm shadow-red-500 border-red-500"}`;
   };
 
   const [workout, setWorkout] = useState(initialForm);

@@ -1,6 +1,8 @@
 import { BsFillTrashFill } from "react-icons/bs";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
 
@@ -30,7 +32,7 @@ const WorkoutDetails = ({ workout }) => {
   return (
     <div className="mx-16">
       <div className="flex bg-slate-50 mb-3">
-        <div className="mx-8">
+        <div className="mx-8 my-5">
           <h4 className="text-purple-400 font-bold pb-3">{workout.title}</h4>
           <p>
             <strong>Load(kg): </strong>
@@ -40,7 +42,11 @@ const WorkoutDetails = ({ workout }) => {
             <strong>Reps: </strong>
             {workout.reps}
           </p>
-          <p>{workout.createdAt}</p>
+          <p>
+            {formatDistanceToNow(new Date(workout.createdAt), {
+              addSuffix: true,
+            })}
+          </p>
         </div>
         <div className="mt-4 mr-2">
           <button onClick={handleClick}>
