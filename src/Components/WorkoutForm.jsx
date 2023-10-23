@@ -18,7 +18,7 @@ const WorkoutForm = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const res = await fetch("/api/workouts", {
+      const res = await fetch(process.env.BACKEND_LIVE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(workout),

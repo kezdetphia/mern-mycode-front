@@ -9,7 +9,7 @@ const WorkoutDetails = ({ workout }) => {
   const handleClick = async () => {
     try {
       console.log(workout._id);
-      const res = await fetch(`/api/workouts/${workout._id}`, {
+      const res = await fetch(`${process.env.BACKEND_LIVE}/${workout._id}`, {
         method: "DELETE",
       });
 
