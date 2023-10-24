@@ -9,8 +9,9 @@ const WorkoutDetails = ({ workout }) => {
   const handleClick = async () => {
     try {
       console.log(workout._id);
-      const res = await fetch(
-`https://mern-workout-back.onrender.com/api/workouts/${workout._id}`,
+      // `https://mern-workout-back.onrender.com/api/workouts/${workout._id}`,
+      const res = await fetch(`http://localhost:4000/api/workouts/${workout._id}`,
+      
         {
           method: "DELETE",
         }

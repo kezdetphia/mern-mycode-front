@@ -19,8 +19,8 @@ const WorkoutForm = () => {
     try {
       e.preventDefault();
       
-      const res = await fetch(
-        `https://mern-workout-back.onrender.com/api/workouts`,
+      const res = await fetch('http://localhost:4000/api/workouts',
+        // `https://mern-workout-back.onrender.com/api/workouts`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

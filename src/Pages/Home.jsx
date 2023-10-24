@@ -11,7 +11,8 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkout = async () => {
         const response = await fetch(
-          `https://mern-workout-back.onrender.com/api/workouts`
+          // `https://mern-workout-back.onrender.com/api/workouts`
+          'http://localhost:4000/api/workouts'
         );
       const data = await response.json();
 
