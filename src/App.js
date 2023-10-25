@@ -4,7 +4,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './Pages/Home'
 import Navbar from './Components/Navbar'
 import WorkoutForm from "./Components/WorkoutForm"
-
+import SignupPage from "./Pages/SignupPage";
 // import UseReducerPractice from "./UseReducerPractice";
 
 
@@ -17,6 +17,7 @@ function App() {
           <Routes>
             <Route path="" element={<Home />} />
             <Route path="/add" element={<WorkoutForm />} />
+            <Route path="/signup" element={<SignupPage />} />
             {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
           </Routes>
         </div>
