@@ -21,7 +21,6 @@ export function workoutsReducer(state, action){
   }
 }
 
-
 export const WorkoutsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(workoutsReducer, { workouts: null });
 

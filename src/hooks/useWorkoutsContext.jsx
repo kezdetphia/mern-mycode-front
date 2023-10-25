@@ -6,7 +6,7 @@ export const useWorkoutsContext = () => {
 
   if (!context) {
     throw new Error(
-      "useWorkoutsContext must be used inside a WorkoutsContextProvider"
+      "useWorkoutsContext must be used inside  WorkoutsContextProvider"
     );
 
   }
