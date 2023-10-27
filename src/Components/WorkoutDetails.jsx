@@ -36,8 +36,13 @@ const WorkoutDetails = ({ workout }) => {
   return (
     <div className="mx-16">
       <div className="flex bg-slate-50 mb-3">
-        <div className="mx-8 my-5">
-          <h4 className="text-purple-400 font-bold pb-3">{workout.title}</h4>
+        <div className="mx-8 my-5 w-full ">
+          <div className="flex justify-between w-full">
+            <h4 className="text-purple-400 font-bold pb-3 pr-3">{workout.title}</h4>
+            <button onClick={handleClick}>
+              <BsFillTrashFill />
+            </button>
+          </div>
           <p>
             <strong>Load(kg): </strong>
             {workout.load}
@@ -52,11 +57,7 @@ const WorkoutDetails = ({ workout }) => {
             })}
           </p>
         </div>
-        <div className="mt-4 mr-2">
-          <button onClick={handleClick}>
-            <BsFillTrashFill />
-          </button>
-        </div>
+      
       </div>
     </div>
   );

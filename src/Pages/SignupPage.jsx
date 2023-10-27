@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSignup } from "../hooks/useSignup";
 
 const SignupPage = () => {
 
@@ -8,6 +9,8 @@ const SignupPage = () => {
   };
 
   const [signupForm, setSignupForm] = useState(intialForm);
+  const {signup, error, isLoading} = useSignup()
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,25 +22,9 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await fetch("http://localhost:4000/api/users/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(signupForm),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        console.log(data);
-      } else {
-        console.error("Error: Something went wrong");
-      }
-    } catch (error) {
-      console.error("Network error:", error);
-    }
-    setSignupForm(intialForm);
-  };
+    console.log(signupForm)
+    await signup(signupForm);
+  }
 
   return (
     <div className="flex justify-center mt-40  ">
@@ -64,13 +51,17 @@ const SignupPage = () => {
             name="password"
             onChange={handleChange}
           />
-          <div className="flex justify-center  py-5">
+          <div className="flex justify-center flex-col py-5">
             <button
               className="bg-blue-500 text-white rounded-md  px-4 py-1"
               type="submit"
+              disabled={isLoading}
             >
               Register
             </button>
+            <div className="flex justify-center pt-5 text-red-500">
+              {error && <div>{error}</div>}
+            </div>
           </div>
         </form>
       </div>
