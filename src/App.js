@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 //pages & components
 import Home from './Pages/Home'
@@ -9,10 +9,11 @@ import SignupPage from "./Pages/SignupPage";
 
 
 function App() {
+
   return (
     <div className="bg-background h-screen">
       <BrowserRouter>
-        <Navbar />
+          <Navbar />
         <div className="pages">
           <Routes>
             <Route path="" element={<Home />} />

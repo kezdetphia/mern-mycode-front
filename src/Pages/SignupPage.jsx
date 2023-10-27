@@ -3,6 +3,9 @@ import { useSignup } from "../hooks/useSignup";
 
 const SignupPage = () => {
 
+  const [headerInstruction, setHeaderInstruction] = useState('Create an account')
+
+
   const intialForm = {
     email: "",
     password: "",
@@ -23,44 +26,48 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(signupForm)
-    await signup(signupForm);
+    signup(signupForm);
   }
 
   return (
-    <div className="flex justify-center mt-40  ">
-      <div className="  bg-gray-200 border rounded-md ">
-        <div className="text-md text-white text-bold flex justify-center py-2  rounded-lg bg-gray-400">
-          Register
+    <div className="flex justify-center pt-40 w-screen h-screen bg-background  ">
+      <div className="bg-white border rounded-md w-96 h-1/2 px-7  ">
+        <div className="text-2xl font-bold mt-10 mx-2 ">
+          {headerInstruction}
         </div>
-        <form className="flex flex-col m-2  " onSubmit={handleSubmit}>
-          <label className="p-1 text-gray-600">Email</label>
+        <div className="border bg-background mt-4" />
+        <form className="flex flex-col mx-2 my-10  " onSubmit={handleSubmit}>
+
           <input
-            className="p-1 rounded-lg bg-gray-300"
+            className="p-3 rounded-lg bg-background mb-3 text-xs"
             placeholder="Email"
             type="email"
             value={signupForm.email}
             name="email"
             onChange={handleChange}
           />
-          <label className="p-1 text-gray-600 ">Password</label>
           <input
-            className="p-1 rounded-lg bg-gray-300"
+            className="p-3 rounded-lg bg-background text-xs"
             placeholder="Password"
             type="password"
             value={signupForm.password}
             name="password"
             onChange={handleChange}
           />
-          <div className="flex justify-center flex-col py-5">
+
+          <div className="flex justify-center flex-col py-10">
             <button
-              className="bg-blue-500 text-white rounded-md  px-4 py-1"
+              className="bg-mygreen text-white font-bold rounded-md p-3 text-xs"
               type="submit"
               disabled={isLoading}
             >
               Register
             </button>
-            <div className="flex justify-center pt-5 text-red-500">
+
+            <div className="flex justify-center mt-10 text-red-400 text-sm">
+            <div className="">
               {error && <div>{error}</div>}
+            </div>
             </div>
           </div>
         </form>
