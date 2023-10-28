@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { useEffect } from "react";
 
 export const AuthContext = createContext();
 
@@ -15,6 +16,15 @@ const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { user: null });
+
+  useEffect(()=>{
+    // if there's a user in localStorage, log in user
+    // this will prevent front-end user:null when refreshing page
+    const user = JSON.parse(localStorage.getItem('user'))
+    if (user){
+      dispatch({type: "LOGIN", payload: user})
+    }
+  },[])
 
   console.log("Authcontext State: ", state);
 
