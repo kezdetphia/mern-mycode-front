@@ -2,18 +2,16 @@ import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 
 const SignupPage = () => {
-
-  const [headerInstruction, setHeaderInstruction] = useState('Create an account')
-
-
   const intialForm = {
     email: "",
     password: "",
   };
 
   const [signupForm, setSignupForm] = useState(intialForm);
-  const {signup, error, isLoading} = useSignup()
 
+  const [headerInstruction, setHeaderInstruction] = useState("Create an account");
+
+  const { signup, error, isLoading } = useSignup();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,9 +23,8 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(signupForm)
     signup(signupForm);
-  }
+  };
 
   return (
     <div className="flex justify-center pt-40 w-screen h-screen bg-background  ">
@@ -37,7 +34,6 @@ const SignupPage = () => {
         </div>
         <div className="border bg-background mt-4" />
         <form className="flex flex-col mx-2 my-10  " onSubmit={handleSubmit}>
-
           <input
             className="p-3 rounded-lg bg-background mb-3 text-xs"
             placeholder="Email"
@@ -65,9 +61,7 @@ const SignupPage = () => {
             </button>
 
             <div className="flex justify-center mt-10 text-red-400 text-sm">
-            <div className="">
-              {error && <div>{error}</div>}
-            </div>
+              <div className="">{error && <div>{error}</div>}</div>
             </div>
           </div>
         </form>

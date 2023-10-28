@@ -33,7 +33,7 @@ export const useSignup = () => {
         dispatch({type: 'LOGIN', payload: json })
       }
     }catch(error){
-      setError('An error occured during signuo')
+      setError('An error occured during signup')
     } finally {
       setIsLoading(false)
     }
