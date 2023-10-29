@@ -1,5 +1,7 @@
 import { useState } from "react";
+import {Link} from 'react-router-dom'
 import { useSignup } from "../hooks/useSignup";
+
 
 const SignupPage = () => {
   const intialForm = {

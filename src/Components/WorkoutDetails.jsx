@@ -41,9 +41,9 @@ const WorkoutDetails = ({ workout }) => {
   };
 
   return (
-    <div className="mx-16">
+    <div className="flex flex-col px-16 w-full">
       <div className="flex bg-slate-50 mb-3">
-        <div className="mx-8 my-5 w-full ">
+        <div className="px-8 my-5 w-full ">
           <div className="flex justify-between w-full">
             <h4 className="text-purple-400 font-bold pb-3 pr-3">{workout.title}</h4>
             <button onClick={handleClick}>

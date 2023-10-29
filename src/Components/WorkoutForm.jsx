@@ -66,8 +66,8 @@ const WorkoutForm = () => {
   };
 
   return (
-    <div className="flex flex-col mr-10   shadow-lg shadow-darkgray  ">
-      <p className="mx-7 my-4 text-xl font-bold">Add a new workout</p>
+    <div className="flex flex-col pr-10   shadow-lg shadow-darkgray  ">
+      <p className="px-7 py-4 text-xl font-bold">Add a new workout</p>
       <form
         className="flex flex-col mx-7 my-4   "
         onSubmit={(e) => handleSubmit(e)}

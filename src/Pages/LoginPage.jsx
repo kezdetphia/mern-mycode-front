@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
+import {Link} from 'react-router-dom'
 
 const LoginPage = () => {
 
@@ -61,6 +62,14 @@ const LoginPage = () => {
             >
               Login
             </button>
+            <span className="flex justify-center mt-2 text-xs">
+              Don't have an account yet?
+            </span>
+            <Link 
+              className="flex justify-center text-xs hover:text-mygreen"
+              to="/signup">
+              Register
+            </Link>
 
             <div className="flex justify-center mt-10 text-red-400 text-sm">
               <div className="">{error && <div>{error}</div>}</div>

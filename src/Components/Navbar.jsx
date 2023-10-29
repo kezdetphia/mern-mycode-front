@@ -5,10 +5,10 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 const Navbar = () => {
   const { logout } = useLogout();
-  const {user} = useAuthContext()
+  const { user } = useAuthContext();
 
   const handleLogout = () => {
-    logout()
+    logout();
   };
 
   return (
@@ -17,26 +17,21 @@ const Navbar = () => {
         <Link to="/">
           <h1 className="text-xl font-bold text-primary">Workout Tracker</h1>
         </Link>
-        {!user && (
-          <div>
+        {/* {!user && (
+          <div className="flex ">
             <Link to="/signup">
               <h1 className=""> Sign Up </h1>
             </Link>
             <Link to="/login">
-              <h1 className=""> Login </h1>
+              <h1 className="px-4"> Login </h1>
             </Link>
           </div>
-        )}
+        )} */}
 
         {user && (
-          <div>
-
-           <span>
-            {user.email}
-            </span>
-          <button onClick={handleLogout} >
-            Logout
-          </button>
+          <div className = ''>
+            <span className="">{user.email}</span>
+            <button className="px-2 py-1 ml-3 bg-mygreen rounded-md text-white" onClick={handleLogout}>Logout</button>
           </div>
         )}
       </div>

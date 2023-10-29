@@ -14,7 +14,7 @@ function App() {
   const {user}= useAuthContext()
 
   return (
-    <div className="bg-background h-screen">
+    <div className="bg-background h-screen w-screen">
       <BrowserRouter>
           <Navbar />
         <div className="pages">
