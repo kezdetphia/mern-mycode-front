@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 //pages & components
 import Home from './Pages/Home'
@@ -10,6 +11,7 @@ import LoginPage from "./Pages/LoginPage";
 
 
 function App() {
+  const {user}= useAuthContext()
 
   return (
     <div className="bg-background h-screen">
@@ -17,10 +19,10 @@ function App() {
           <Navbar />
         <div className="pages">
           <Routes>
-            <Route path="" element={<Home />} />
+            <Route path="" element={user ? <Home /> : <Navigate to='/login' />} />
             <Route path="/add" element={<WorkoutForm />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={ !user ? <SignupPage /> : <Navigate to='/'/>} />
+            <Route path="/login" element={!user ?  <LoginPage /> : <Navigate to='/' />} />
             {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
           </Routes>
         </div>
