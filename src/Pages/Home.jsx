@@ -15,16 +15,21 @@ const Home = () => {
     const fetchWorkout = async () => {
         const response = await fetch(
           // `https://mern-workout-back.onrender.com/api/workouts`
-          'http://localhost:4000/api/workouts'
-        );
+          'http://localhost:4000/api/workouts', {
+            header: {
+              'Authorization': `Bearer ${user.token}`
+            }
+          }
       const data = await response.json();
 
       if (response.ok) {
         dispatch({type: "SET_WORKOUTS", payload: data})
       }
     };
-    fetchWorkout();
-  }, [dispatch]);
+
+    if (user) fetchWorkout();
+
+  }, [dispatch, user]);
 
 
 

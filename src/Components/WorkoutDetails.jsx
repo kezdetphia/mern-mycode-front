@@ -1,19 +1,26 @@
 import { BsFillTrashFill } from "react-icons/bs";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
+  const {user} = useAuthContext()
 
   const handleClick = async () => {
+    // if no user don't even bother executing
+    if (!user) return
     try {
       console.log(workout._id);
       // `https://mern-workout-back.onrender.com/api/workouts/${workout._id}`,
-      const res = await fetch(`http://localhost:4000/api/workouts/${workout._id}`,
-      
+      const res = await fetch(
+        `http://localhost:4000/api/workouts/${workout._id}`,
         {
           method: "DELETE",
+          headers: {
+            'Authorization': `Bearer ${user.token}`,
+          }
         }
       );
 

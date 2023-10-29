@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const WorkoutForm = () => {
   const {dispatch } = useWorkoutsContext();
+  const {user}  = useAuthContext()
 
   const initialForm = {
     title: "",
@@ -10,37 +12,46 @@ const WorkoutForm = () => {
     load: "",
   };
 
+  const [emptyFields, setEmptyFields] = useState([]);
   const [workout, setWorkout] = useState(initialForm);
   const [error, setError] = useState("");
-  const [emptyFields, setEmptyFields] = useState([]);
   const [focusedField, setFocusedField] = useState("");
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+
+      if(!user) {
+        setError('You must be logged in')
+        return
+      }
       
-      const res = await fetch('http://localhost:4000/api/workouts',
+      const res = await fetch(
+        "http://localhost:4000/api/workouts",
         // `https://mern-workout-back.onrender.com/api/workouts`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${user.token}`,
+          },
           body: JSON.stringify(workout),
         }
       );
 
-      const resData = await res.json();
+      const resJson = await res.json();
 
       if (!res.ok) {
-        setError(resData.error);
-        setEmptyFields(resData.emptyFields);
+        setError(resJson.error);
+        // setEmptyFields(resJson.emptyFields);
       }
 
       if (res.ok) {
         setWorkout(initialForm);
-        console.log("new workout added", resData);
+        console.log("new workout added", resJson);
         setEmptyFields([]);
         setError(null);
-        dispatch({ type: "CREATE_WORKOUT", payload: resData });
+        dispatch({ type: "CREATE_WORKOUT", payload: resJson });
       } else {
         console.error("Request failed with status: ", res.status);
       }
