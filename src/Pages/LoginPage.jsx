@@ -53,15 +53,16 @@ const LoginPage = () => {
             name="password"
             onChange={handleChange}
           />
-
-          <button
-            className="bg-mygreen text-white font-bold rounded-md p-3 text-xs mt-5"
-            type="submit"
-            disabled={isLoading}
-          >
-            Login
-          </button>
-          <span className="text-xs flex justify-center pt-1">
+          <div className="flex justify-center items-center flex-col ">
+            <button
+              className="bg-mygreen text-white font-bold rounded-md p-3 text-xs mt-5 w-1/3 "
+              type="submit"
+              disabled={isLoading}
+            >
+              Login
+            </button>
+          </div>
+          <span className="text-xs flex justify-center sm:pt-5 pt-3">
             Don't have an account yet?
           </span>
           <Link
