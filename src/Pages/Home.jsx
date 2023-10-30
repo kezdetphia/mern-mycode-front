@@ -35,9 +35,9 @@ const Home = () => {
 
 
   return (
-    <div className="Home flex my-10 w-full space-between">
+    <div className="Home flex my-10 w-full md:px-10 space-between">
 
-      <div className="workouts w-full mx-20">
+      <div className="workouts w-full">
         {workouts &&
           workouts.map((workout) => <WorkoutDetails key={workout._id} workout={workout} />)}
       </div>
