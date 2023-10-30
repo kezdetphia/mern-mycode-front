@@ -35,14 +35,14 @@ const Home = () => {
 
 
   return (
-    <div className="Home flex my-10 w-full md:px-10 space-between">
+    <div className="Home bg-background flex flex-col sm:flex-row my-10 w-screen h-full md:px-10 space-between">
 
-      <div className="workouts w-full">
+      <div className=" flex justify-center sm:pl-5 ">
+          <WorkoutForm />
+      </div>
+      <div className="workouts w-full pt-5 sm:pt-0">
         {workouts &&
           workouts.map((workout) => <WorkoutDetails key={workout._id} workout={workout} />)}
-      </div>
-      <div className="w-1/2 mx-10">
-          <WorkoutForm />
       </div>
 
     </div>
