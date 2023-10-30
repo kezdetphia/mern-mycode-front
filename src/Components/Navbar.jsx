@@ -18,8 +18,8 @@ const Navbar = () => {
           <h1 className="text-xl font-bold text-secondary">Workout Tracker</h1>
         </Link>
         {user && (
-          <div className="">
-            <span className="text-background">{user.email}</span>
+          <div className="flex items-center ">
+            <span className="text-background text-xs">{user.email}</span>
             <button
               className="px-2 py-1 ml-3 bg-background rounded-md text-textcolor hover:bg-secondary"
               onClick={handleLogout}
