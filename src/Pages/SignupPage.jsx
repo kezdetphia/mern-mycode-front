@@ -29,8 +29,8 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="flex justify-center pt-40 w-screen h-screen bg-background  ">
-      <div className="bg-white border rounded-md w-96 h-1/2 px-7  ">
+    <div className="flex justify-center sm:pt-40  bg-background  ">
+      <div className="bg-white border rounded-md sm:w-96 sm:h-1/2 w-full px-7   ">
         <div className="text-2xl font-bold mt-10 mx-2 ">
           {headerInstruction}
         </div>
@@ -53,9 +53,9 @@ const SignupPage = () => {
             onChange={handleChange}
           />
 
-          <div className="flex justify-center flex-col py-10">
+          <div className="flex justify-center flex-col ">
             <button
-              className="bg-mygreen text-white font-bold rounded-md p-3 text-xs"
+              className="bg-mygreen text-white font-bold rounded-md p-3 mt-5 text-xs"
               type="submit"
               disabled={isLoading}
             >

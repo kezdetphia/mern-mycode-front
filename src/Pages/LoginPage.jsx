@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
-
   const intialForm = {
     email: "",
     password: "",
@@ -30,12 +29,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center pt-40 w-screen h-screen bg-background  ">
-      <div className="bg-white border rounded-md w-96 h-1/2 px-7  ">
+    <div className="flex justify-center sm:pt-40  bg-background  ">
+      <div className="bg-white border rounded-md sm:w-96 sm:h-1/2 w-full px-7   ">
         <div className="text-2xl font-bold mt-10 mx-2 ">
           {headerInstruction}
         </div>
         <div className="border bg-background mt-4" />
+
         <form className="flex flex-col mx-2 my-10  " onSubmit={handleSubmit}>
           <input
             className="p-3 rounded-lg bg-background mb-3 text-xs"
@@ -54,27 +54,24 @@ const LoginPage = () => {
             onChange={handleChange}
           />
 
-          <div className="flex justify-center flex-col py-10">
-            <button
-              className="bg-mygreen text-white font-bold rounded-md p-3 text-xs"
-              type="submit"
-              disabled={isLoading}
-            >
-              Login
-            </button>
-            <span className="flex justify-center mt-2 text-xs">
-              Don't have an account yet?
-            </span>
-            <Link 
-              className="flex justify-center text-xs hover:text-mygreen"
-              to="/signup">
-              Register
-            </Link>
+          <button
+            className="bg-mygreen text-white font-bold rounded-md p-3 text-xs mt-5"
+            type="submit"
+            disabled={isLoading}
+          >
+            Login
+          </button>
+          <span className="text-xs flex justify-center pt-1">
+            Don't have an account yet?
+          </span>
+          <Link
+            className="text-xs flex justify-center pt-1 mb-5  hover:text-mygreen"
+            to="/signup"
+          >
+            Register
+          </Link>
 
-            <div className="flex justify-center mt-10 text-red-400 text-sm">
-              <div className="">{error && <div>{error}</div>}</div>
-            </div>
-          </div>
+          <span className="">{error && <div>{error}</div>}</span>
         </form>
       </div>
     </div>

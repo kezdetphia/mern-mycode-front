@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="h-20 bg-blue-50  ">
+    <header className=" bg-blue-50  ">
       <div className="py-6 px-6 flex justify-between ">
         <Link to="/">
           <h1 className="text-xl font-bold text-primary">Workout Tracker</h1>
