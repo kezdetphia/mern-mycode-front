@@ -41,7 +41,7 @@ const WorkoutDetails = ({ workout }) => {
   };
 
   return (
-    <div className="flex flex-col px-5 w-full">
+    <div className="flex flex-col px-5 w-full transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
       <div className="flex bg-cardbg mb-3 rounded-md">
         <div className="px-8 my-5 w-full ">
           <div className="flex justify-between w-full ">

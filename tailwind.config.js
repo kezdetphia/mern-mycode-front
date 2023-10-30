@@ -14,6 +14,9 @@ module.exports = {
         highlight: "#5da9e9",
       },
     },
+    fontFamily: {
+      custom: ["Lato", "Roboto", "Helvetica", "Arial", "sans"],
+    },
   },
   plugins: [],
 };
