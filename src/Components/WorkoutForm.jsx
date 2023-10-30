@@ -66,13 +66,15 @@ const WorkoutForm = () => {
   };
 
   return (
-    <div className="flex flex-col pr-10   shadow-lg shadow-darkgray  ">
-      <p className="px-7 py-4 text-xl font-bold">Add a new workout</p>
+    <div className="flex flex-col pr-10 shadow-lg shadow-darkgray  ">
+      <p className="px-7 py-4 text-xl font-bold text-texcolor">
+        Add a new workout
+      </p>
       <form
         className="flex flex-col mx-7 my-4   "
         onSubmit={(e) => handleSubmit(e)}
       >
-        <label className="text-lightgray pb-2">Exercise Title:</label>
+        <label className="pb-2 text-textcolor">Exercise Title:</label>
         <input
           placeholder="Title"
           type="text"
@@ -86,7 +88,7 @@ const WorkoutForm = () => {
           }`}
           onFocus={() => setFocusedField("title")}
         />
-        <label className="text-lightgray pb-2">Load: (in kg)</label>
+        <label className="text-textcolor pb-2">Load: (in kg)</label>
         <input
           placeholder="Load"
           value={workout.load}
@@ -99,7 +101,7 @@ const WorkoutForm = () => {
           }`}
           onFocus={() => setFocusedField("load")}
         />
-        <label className="text-lightgray pb-2">Reps: </label>
+        <label className="text-textcolor pb-2">Reps: </label>
         <input
           placeholder="Reps"
           value={workout.reps}
@@ -115,7 +117,7 @@ const WorkoutForm = () => {
 
         <div className="flex justify-start items-center ">
           <button
-            className="rounded-lg text-white bg-green-500 px-4 py-1"
+            className="rounded-lg text-textcolor hover:bg-highlight bg-secondary px-4 py-1"
             type="submit"
           >
             Add Workout

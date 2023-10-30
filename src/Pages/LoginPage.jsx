@@ -30,8 +30,8 @@ const LoginPage = () => {
 
   return (
     <div className="flex justify-center sm:pt-40  bg-background  ">
-      <div className="bg-white border rounded-md sm:w-96 sm:h-1/2 w-full px-7   ">
-        <div className="text-2xl font-bold mt-10 mx-2 ">
+      <div className="bg-white border rounded-md sm:w-96 sm:h-1/2 w-full  px-7   ">
+        <div className="text-2xl font-bold mt-10 mx-2 text-textcolor ">
           {headerInstruction}
         </div>
         <div className="border bg-background mt-4" />
@@ -55,7 +55,7 @@ const LoginPage = () => {
           />
           <div className="flex justify-center items-center flex-col ">
             <button
-              className="bg-mygreen text-white font-bold rounded-md p-3 text-xs mt-5 w-1/3 "
+              className="bg-secondary hover:bg-highlight text-textcolor font-bold rounded-md p-3 text-xs mt-5 w-1/3 "
               type="submit"
               disabled={isLoading}
             >
@@ -66,7 +66,7 @@ const LoginPage = () => {
             Don't have an account yet?
           </span>
           <Link
-            className="text-xs flex justify-center pt-1 mb-5  hover:text-mygreen"
+            className="text-xs flex justify-center pt-1 mb-5  hover:text-highlight"
             to="/signup"
           >
             Register

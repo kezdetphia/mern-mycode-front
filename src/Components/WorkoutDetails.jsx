@@ -42,29 +42,30 @@ const WorkoutDetails = ({ workout }) => {
 
   return (
     <div className="flex flex-col px-16 w-full">
-      <div className="flex bg-slate-50 mb-3">
+      <div className="flex bg-cardbg mb-3 rounded-md">
         <div className="px-8 my-5 w-full ">
-          <div className="flex justify-between w-full">
-            <h4 className="text-purple-400 font-bold pb-3 pr-3">{workout.title}</h4>
+          <div className="flex justify-between w-full ">
+            <h4 className="text-secondary font-bold pb-3 pr-3">
+              {workout.title}
+            </h4>
             <button onClick={handleClick}>
               <BsFillTrashFill />
             </button>
           </div>
-          <p>
+          <p className="text-textcolor">
             <strong>Load(kg): </strong>
             {workout.load}
           </p>
-          <p>
+          <p className="text-textcolor">
             <strong>Reps: </strong>
             {workout.reps}
           </p>
-          <p>
+          <p className="text-textcolor">
             {formatDistanceToNow(new Date(workout.createdAt), {
               addSuffix: true,
             })}
           </p>
         </div>
-      
       </div>
     </div>
   );
