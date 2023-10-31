@@ -10,7 +10,7 @@ import LoginPage from "./Pages/LoginPage";
 import EditorPage from './Components/EditorPage'
 
 // import UseReducerPractice from "./UseReducerPractice";
-import EditorPage from './Components/'
+
 
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
               element={!user ? <LoginPage /> : <Navigate to="/" />}
             />
    
-
+            <Route path='/editor' element={<EditorPage />} />
             {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
           </Routes>
         </div>
