@@ -2,15 +2,15 @@ import Editor from '@monaco-editor/react'
 import { useState, useRef } from 'react';
 
 //editor form
-
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useCodesContext } from '../hooks/useCodesContext';
 import { useAuthContext } from "../hooks/useAuthContext";
-
 //editor form
+
+
 const EditorPage = () => {
 
   //workoutform
-    const { dispatch } = useWorkoutsContext();
+    const { dispatch } = useCodesContext();
     const { user } = useAuthContext();
 
     const initialForm = {

@@ -7,7 +7,7 @@ import Navbar from './Components/Navbar'
 import WorkoutForm from "./Components/WorkoutForm"
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
-import EditorPage from './Components/EditorPage'
+import CodeForm from './Components/CodeForm'
 
 // import UseReducerPractice from "./UseReducerPractice";
 
@@ -37,7 +37,7 @@ function App() {
               element={!user ? <LoginPage /> : <Navigate to="/" />}
             />
    
-            <Route path='/editor' element={<EditorPage />} />
+            <Route path='/editor' element={<CodeForm />} />
             {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
           </Routes>
         </div>
