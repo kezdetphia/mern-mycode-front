@@ -25,10 +25,10 @@ export const codesReducer=(state, action)=>{
 
 
 export const CodesContextProvider=({children})=>{
-  const [state, dispatch] = useReducer(codesReducer, {codes: null})
+  const [state, dispatch] = useReducer(codesReducer, {codes: []})
 
   return(
-    <CodesContext.Provider value={{...state, dispatch}}>
+    <CodesContext.Provider value={{state, dispatch}}>
       {children}
     </CodesContext.Provider>
   )

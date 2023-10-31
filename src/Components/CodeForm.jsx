@@ -5,44 +5,41 @@ import { useCodesContext } from "../hooks/useCodesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const CodeForm = () => {
-
   const { dispatch } = useCodesContext();
   const { user } = useAuthContext();
   const [error, setError] = useState("");
+  
   const [code, setCode] = useState({
     title: "",
     description: "",
-    language: "javascript", // Default language
-    code: "Here is some JS text", // Default code
+    language: "",
+    code: "Your code is here",
   });
 
   const editorRef = useRef(null);
-  const file = {
-    name: code.title,
-    language: code.language,
-    value: code.code,
-  };
 
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
   }
 
-  const getEditorValue =async ()=> {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCode({ ...code, [name]: value });
+  };
+
+  const getEditorValue = async () => {
     const updatedCode = {
       ...code,
       code: editorRef.current.getValue(),
     };
     setCode(updatedCode);
 
-    //code
+
     try {
-
-
-      if(!user) {
-        setError('You must be logged in')
-        return
+      if (!user) {
+        setError("You must be logged in");
+        return;
       }
-      
       const res = await fetch(
         "http://localhost:4000/api/code",
         // `https://mern-code-back.onrender.com/api/code`,
@@ -50,23 +47,19 @@ const CodeForm = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            'Authorization': `Bearer ${user.token}`,
+            Authorization: `Bearer ${user.token}`,
           },
-          body: JSON.stringify(code),
+          body: JSON.stringify(updatedCode),
         }
       );
-
       const resJson = await res.json();
 
       if (!res.ok) {
+        console.log('res not ok error')
         setError(resJson.error);
-        // setEmptyFields(resJson.emptyFields);
       }
-
       if (res.ok) {
-        
-        console.log("new code added", resJson);
-
+        console.log("New code added", resJson);
         setError(null);
         dispatch({ type: "CREATE_CODE", payload: resJson });
       } else {
@@ -76,31 +69,47 @@ const CodeForm = () => {
       console.log("Error:", err);
     }
 
-    //code
-
     console.log("Updated Code:", updatedCode);
-  }
+  };
 
   return (
     <div>
       <div className="w-full h-full">
+        <input
+          name="language"
+          placeholder="Language"
+          value={code.language}
+          onChange={handleInputChange}
+        />
+        <input
+          name="title"
+          placeholder="Name"
+          value={code.title}
+          onChange={handleInputChange}
+        />
+        <input
+          name="description"
+          placeholder="Description"
+          value={code.description}
+          onChange={handleInputChange}
+        />
+
         <button onClick={() => setCode({ ...code, language: "html" })}>
           Switch to HTML
         </button>
-        <button onClick={() => setCode({ ...code, language: "javascript" })}>
-          Switch to JavaScript
-        </button>
-        <button onClick={() => getEditorValue()}>Get Value</button>
-        File name: {file.name}
+
+        <button onClick={getEditorValue}>Save</button>
+
         <Editor
           height="400px"
           width="400px"
           theme="vs-dark"
           onMount={handleEditorDidMount}
-          path={file.name}
-          defaultLanguage={file.language}
-          defaultValue={file.value}
+          path={code.title}
+          defaultLanguage={code.language}
+          defaultValue={code.code}
         />
+        {error && <div className="text-red-500">{error}</div>}
       </div>
     </div>
   );
