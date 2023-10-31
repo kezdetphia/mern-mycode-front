@@ -8,6 +8,7 @@ import WorkoutForm from "./Components/WorkoutForm"
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 // import UseReducerPractice from "./UseReducerPractice";
+import EditorPage from './Components/'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/add" element={<WorkoutForm />} />
             <Route path="/signup" element={ !user ? <SignupPage /> : <Navigate to='/'/>} />
             <Route path="/login" element={!user ?  <LoginPage /> : <Navigate to='/' />} />
+            <Route path='/editor' element= {EditorPage} />
             {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
           </Routes>
         </div>
