@@ -6,6 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const title = '<myCode />'
 
   const handleLogout = () => {
     logout();
@@ -15,7 +16,7 @@ const Navbar = () => {
     <header className=" bg-primary ">
       <div className="py-6 px-6 flex justify-between ">
         <Link to="/">
-          <h1 className="text-xl font-bold font-custom text-secondary">Workout Tracker</h1>
+          <h1 className="text-xl font-bold font-custom "> {title} </h1>
         </Link>
         {user && (
           <div className="flex items-center ">
