@@ -8,7 +8,6 @@ import Editor from "@monaco-editor/react";
 import { useState, useRef } from "react";
 
 
-
 const CodeDetails = ({ code }) => {
   const { dispatch } = useCodesContext();
   const { user } = useAuthContext();
@@ -33,8 +32,9 @@ const CodeDetails = ({ code }) => {
         }
       );
         console.log(user.token)
-      if (res.ok) {
         const resDatas = await res.json();
+        console.log('this is resdata', resDatas)
+      if (res.ok) {
         console.log('thisis the id', resDatas)
         dispatch({ type: "DELETE_CODE", payload: resDatas });
         console.log("New code deleted", resDatas);
