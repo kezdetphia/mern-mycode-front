@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <header className=" bg-urllink ">
-      <div className="py-6 px-6 flex justify-between ">
+      <div className="py-6 px-6 flex justify-between ml-5 ">
         <Link to="/">
           <h1 className="text-xl font-bold font-custom text-white hover:text-gray-400 "> {title} </h1>
         </Link>

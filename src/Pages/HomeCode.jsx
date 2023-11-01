@@ -3,7 +3,7 @@ import { useCodesContext } from "../hooks/useCodesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 //pages & components
-import CodeDetails from "../Components/CodeDetails";
+import CodeInfo from "../Components/CodeInfo";
 import CodeForm from "../Components/CodeForm";
 
 const HomeCode = () => {
@@ -32,13 +32,13 @@ const HomeCode = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="Home bg-backg flex flex-col sm:flex-row  w-screen h-full  space-between ">
+    <div className="Home bg-backg flex flex-col sm:flex-row  w-full h-full  space-between ">
       <div className=" flex justify-center   ">
         <CodeForm />
       </div>
-      <div className="codes pt-5 sm:pt-0">
+      <div className="codes pt-5 sm:pt-0 my-10 w-full ">
         {codes &&
-          codes.map((code) => <CodeDetails key={code._id} code={code} />)}
+          codes.map((code) => <CodeInfo key={code._id} code={code} />)}
       </div>
     </div>
   );

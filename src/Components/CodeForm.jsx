@@ -107,20 +107,20 @@ const CodeForm = () => {
   };
 
   const languages = [
-    "Java",
-    "PHP",
-    "Python",
     "JavaScript",
-    "C++",
+    "Python",
+    "Java",
     "C#",
-    "Ruby",
+    "C++",
+    "TypeScript",
+    "HTML/CSS",
     "Swift",
+    "PHP",
+    "Ruby",
     "Go",
     "Kotlin",
     "Rust",
-    "TypeScript",
     "Scala",
-    "HTML/CSS",
     "SQL",
     "Bash/Shell scripting",
     "MATLAB",
@@ -140,7 +140,7 @@ const CodeForm = () => {
   ];
 
   return (
-    <div className="m-10">
+    <div className="m-10 ">
       <div className=" ">
         <div className="flex  ">
           <select
@@ -181,13 +181,15 @@ const CodeForm = () => {
           </button>
         )}
 
-        <div className="relative w-full h-screen">
+        <div className="relative w-full h-[600px] ">
           <Editor
+          name='code'
+          value={code.code}
             theme="vs-dark"
             onMount={handleEditorDidMount}
             path={code.title}
             defaultLanguage={code.language}
-            defaultValue={code.code}
+            // defaultValue={code.code}
           />
         </div>
         {error && <div className="text-red-500">{error}</div>}
