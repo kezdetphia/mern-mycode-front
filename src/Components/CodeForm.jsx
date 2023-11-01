@@ -54,6 +54,7 @@ const CodeForm = () => {
       );
       const resJson = await res.json();
 
+
       if (!res.ok) {
         console.log('res not ok error')
         setError(resJson.error);
@@ -62,6 +63,12 @@ const CodeForm = () => {
         console.log("New code added", resJson);
         setError(null);
         dispatch({ type: "CREATE_CODE", payload: resJson });
+        setCode({
+          title: "",
+          description: "",
+          language: "",
+          code: "Your code is here",
+        });
       } else {
         console.error("Request failed with status: ", res.status);
       }

@@ -13,7 +13,7 @@ const CodeDetails = ({ code }) => {
   const { user } = useAuthContext();
 
   const [codeValue, setCodeValue] = useState([])
-    const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const handleClick = async () => {
     // if no user don't even bother executing
@@ -32,16 +32,13 @@ const CodeDetails = ({ code }) => {
         }
       );
         console.log(user.token)
-        const resDatas = await res.json();
-        console.log('this is resdata', resDatas)
-      if (res.ok) {
-        console.log('thisis the id', resDatas)
+        if (res.ok) {
+          const resDatas = await res.json();
         dispatch({ type: "DELETE_CODE", payload: resDatas });
         console.log("New code deleted", resDatas);
       } else {
         console.error(
           "Delete failed with status: ",
-          res.status,
           res.statusText
         );
       }
@@ -59,11 +56,11 @@ const CodeDetails = ({ code }) => {
     code: code.code,
   });
 
-  const editorRef = useRef(null);
+  // const editorRef = useRef(null);
 
-  function handleEditorDidMount(editorEdit, monaco) {
-    editorRef.current = editorEdit;
-  }
+  // function handleEditorDidMount(editorEdit, monaco) {
+  //   editorRef.current = editorEdit;
+  // }
 
   // const handleInputChange = (e) => {
   //   const { name, value } = e.target;
@@ -120,23 +117,25 @@ const CodeDetails = ({ code }) => {
       <div className="flex bg-cardbg mb-3 rounded-md">
         <div className="px-8 my-5 w-full ">
           <div className="flex justify-between w-full ">
-            <h4 className="text-secondary font-bold pb-3 pr-3">{code.title}</h4>
+            <h4 className="text-secondary font-bold pb-3 pr-3">
+              {codeEdit.title}
+            </h4>
             <button onClick={handleClick}>
               <BsFillTrashFill />
             </button>
           </div>
-          
-        <Editor
-          height="400px"
-          width="400px"
-          theme="vs-dark"
-          onMount={handleEditorDidMount}
-          path={code.title}
-          defaultLanguage={code.language}
-          defaultValue={code.code}
-        />
+
+          <Editor
+            height="400px"
+            width="400px"
+            theme="vs-dark"
+            // onMount={handleEditorDidMount}
+            path={codeEdit.title}
+            defaultLanguage={codeEdit.language}
+            defaultValue={codeEdit.code}
+          />
         </div>
-      </div> 
+      </div>
     </div>
   );
 };
