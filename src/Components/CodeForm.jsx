@@ -41,8 +41,8 @@ const CodeForm = () => {
         return;
       }
       const res = await fetch(
-        "http://localhost:4000/api/code",
-        // `https://mern-code-back.onrender.com/api/code`,
+        "http://localhost:4000/api/codes",
+        // `https://mern-code-back.onrender.com/api/codes`,
         {
           method: "POST",
           headers: {

@@ -3,6 +3,9 @@ import { useAuthContext } from "./hooks/useAuthContext";
 
 //pages & components
 import Home from './Pages/Home'
+
+import HomeCode from './Pages/HomeCode'
+
 import Navbar from './Components/Navbar'
 import WorkoutForm from "./Components/WorkoutForm"
 import SignupPage from "./Pages/SignupPage";
@@ -26,7 +29,12 @@ function App() {
               path=""
               element={user ? <Home /> : <Navigate to="/login" />}
             />
-            <Route path="/add" element={<WorkoutForm />} />
+
+            <Route
+              path="/homecode"
+              element={<HomeCode />}
+            />
+        
 
             <Route
               path="/signup"

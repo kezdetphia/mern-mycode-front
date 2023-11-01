@@ -11,6 +11,7 @@ export const codesReducer=(state, action)=>{
     case 'DELETE_CODE': return (
       {codes: state.codes.filter(code => code._id !== action.payload._id)}
     )
+   
     // case 'EDIT_CODE': return 
     //   {codes: state.codes.map(code => {
     //     if (code._id === action.paylod._id){
@@ -28,11 +29,12 @@ export const CodesContextProvider=({children})=>{
   const [state, dispatch] = useReducer(codesReducer, {codes: []})
 
   return(
-    <CodesContext.Provider value={{state, dispatch}}>
+    <CodesContext.Provider value={{...state, dispatch}}>
       {children}
     </CodesContext.Provider>
   )
 }
+
 
 
 
