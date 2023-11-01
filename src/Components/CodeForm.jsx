@@ -1,14 +1,15 @@
 import React, { useRef, useState } from "react";
 import Editor from "@monaco-editor/react";
-
 import { useCodesContext } from "../hooks/useCodesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const CodeForm = () => {
+  // Destructure state variables directly
   const { dispatch } = useCodesContext();
   const { user } = useAuthContext();
-  const [error, setError] = useState("");
-  
+
+  // State for code data and error message
+  const [error, setError] = useState()
   const [code, setCode] = useState({
     title: "",
     description: "",
@@ -18,66 +19,62 @@ const CodeForm = () => {
 
   const editorRef = useRef(null);
 
+  // Function to handle editor mount
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
   }
 
+  // Function to update code data when input fields change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCode({ ...code, [name]: value });
   };
 
-  const getEditorValue = async () => {
-    const updatedCode = {
-      ...code,
-      code: editorRef.current.getValue(),
-    };
-    setCode(updatedCode);
-
-
+  // Function to submit code
+  const submitCode = async () => {
     try {
       if (!user) {
         setError("You must be logged in");
         return;
       }
-      const res = await fetch(
-        "http://localhost:4000/api/codes",
-        // `https://mern-code-back.onrender.com/api/codes`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.token}`,
-          },
-          body: JSON.stringify(updatedCode),
-        }
-      );
+
+      const updatedCode = {
+        ...code,
+        code: editorRef.current.getValue(),
+      };
+
+      const res = await fetch("http://localhost:4000/api/codes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify(updatedCode),
+      });
       const resJson = await res.json();
 
-
       if (!res.ok) {
-        console.log('res not ok error')
+        console.log("res not ok error");
         setError(resJson.error);
-      }
-      if (res.ok) {
+      } else {
         console.log("New code added", resJson);
         setError(null);
         dispatch({ type: "CREATE_CODE", payload: resJson });
+        // Reset the code state to clear the input fields
         setCode({
           title: "",
           description: "",
           language: "",
           code: "Your code is here",
         });
-      } else {
-        console.error("Request failed with status: ", res.status);
       }
     } catch (err) {
       console.log("Error:", err);
     }
-
-    console.log("Updated Code:", updatedCode);
   };
+
+  // Determine whether the user is logged in
+  const isUserLoggedIn = !!user;
 
   return (
     <div>
@@ -105,7 +102,7 @@ const CodeForm = () => {
           Switch to HTML
         </button>
 
-        <button onClick={getEditorValue}>Save</button>
+        {isUserLoggedIn && <button onClick={submitCode}>Save</button>}
 
         <Editor
           height="400px"

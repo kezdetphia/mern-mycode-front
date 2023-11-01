@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCodesContext } from "../hooks/useCodesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -24,7 +24,7 @@ const HomeCode = () => {
       const data = await response.json();
 
       if (response.ok) {
-        dispatch({ type: "SET_CODES", payload: data });
+        dispatch({ type: "SET_CODE", payload: data });
       }
     };
 
@@ -38,9 +38,7 @@ const HomeCode = () => {
       </div>
       <div className="codes w-full pt-5 sm:pt-0">
         {codes &&
-          codes.map((code) => (
-            <CodeDetails key={code._id} code={code} />
-          ))}
+          codes.map((code) => <CodeDetails key={code._id} code={code} />)}
       </div>
     </div>
   );
