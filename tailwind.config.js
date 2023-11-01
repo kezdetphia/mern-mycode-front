@@ -12,6 +12,9 @@ module.exports = {
         error: "#e74c3c",
         cardbg: "#f9f9f9",
         highlight: "#5da9e9",
+        backg: "#2B2A33",
+        urllink: "#1C1B22",
+        search: "#42414D",
       },
     },
     fontFamily: {

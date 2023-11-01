@@ -13,16 +13,16 @@ const Navbar = () => {
   };
 
   return (
-    <header className=" bg-primary ">
+    <header className=" bg-urllink ">
       <div className="py-6 px-6 flex justify-between ">
         <Link to="/">
-          <h1 className="text-xl font-bold font-custom "> {title} </h1>
+          <h1 className="text-xl font-bold font-custom text-white hover:text-gray-400 "> {title} </h1>
         </Link>
         {user && (
           <div className="flex items-center ">
-            <span className="text-background text-xs">{user.email}</span>
+            <span className="text-gray-400 text-xs">{user.email}</span>
             <button
-              className="px-2 py-1 ml-3 bg-background rounded-md text-textcolor hover:bg-secondary"
+              className="px-2 py-1 ml-3 bg-backg rounded-md text-gray-400 hover:bg-search"
               onClick={handleLogout}
             >
               Logout

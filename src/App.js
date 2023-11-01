@@ -20,22 +20,15 @@ function App() {
   const {user}= useAuthContext()
 
   return (
-    <div className="bg-background h-screen w-full font-custom">
+    <div className="bg-backg h-full w-full font-custom">
       <BrowserRouter>
         <Navbar />
         <div className="pages">
           <Routes>
             <Route
               path=""
-              element={user ? <Home /> : <Navigate to="/login" />}
+              element={user ? <HomeCode /> : <Navigate to="/login" />}
             />
-
-            <Route
-              path="/homecode"
-              element={<HomeCode />}
-            />
-        
-
             <Route
               path="/signup"
               element={!user ? <SignupPage /> : <Navigate to="/" />}

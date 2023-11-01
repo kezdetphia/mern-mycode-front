@@ -5,10 +5,12 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 const CodeForm = () => {
   const editorRef = useRef(null);
-
   // Destructure state variables directly
   const { dispatch } = useCodesContext();
   const { user } = useAuthContext();
+
+  // Determine whether the user is logged in
+  const isUserLoggedIn = !!user;
 
   // State for code data and error message
   const [error, setError] = useState();
@@ -104,9 +106,6 @@ const CodeForm = () => {
     }
   };
 
-  // Determine whether the user is logged in
-  const isUserLoggedIn = !!user;
-
   const languages = [
     "Java",
     "PHP",
@@ -141,38 +140,41 @@ const CodeForm = () => {
   ];
 
   return (
-    <div>
-      <div className="w-full h-full">
-        <label>Choose a language</label>
-        <select
-          name="language"
-          // placeholder="Language"
-          value={code.language}
-          onChange={handleInputChange}
-        >
-          {languages.map((language) => (
-            <option key={language} value={language}>
-              {language}
-            </option>
-          ))}
-        </select>
+    <div className="m-10">
+      <div className=" ">
+        <div className="flex  ">
+          <select
+            className="bg-urllink text-gray-500 justify-center flex items-center py-2 rounded-lg pl-2"
+            name="language"
+            // placeholder="Language"
+            value={code.language}
+            onChange={handleInputChange}
+          >
+            {languages.map((language) => (
+              <option key={language} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
 
-        <input
-          name="title"
-          placeholder="Name"
-          value={code.title}
-          onChange={handleInputChange}
-        />
-        <input
-          name="description"
-          placeholder="Description"
-          value={code.description}
-          onChange={handleInputChange}
-        />
-
+          <input
+            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 ml-2"
+            name="title"
+            placeholder="Name"
+            value={code.title}
+            onChange={handleInputChange}
+          />
+          <input
+            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 ml-2"
+            name="description"
+            placeholder="Description"
+            value={code.description}
+            onChange={handleInputChange}
+          />
+        </div>
         {isUserLoggedIn && (
           <button
-            className="bg-mygreen rounded-md px-2 py-1"
+            className="bg-mygreen rounded-md px-2 py-1 min-w-full"
             onClick={submitCode}
           >
             Save
@@ -181,7 +183,6 @@ const CodeForm = () => {
 
         <div className="relative w-full h-screen">
           <Editor
-           
             theme="vs-dark"
             onMount={handleEditorDidMount}
             path={code.title}

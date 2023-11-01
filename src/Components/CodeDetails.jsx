@@ -1,16 +1,12 @@
 // Hooks import
 import { useState, useRef } from "react";
-
 // Context import
 import { useCodesContext } from "../hooks/useCodesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-
 // Embedded code editor import
 import Editor from "@monaco-editor/react";
-
 // Icon import
 import { BsFillTrashFill } from "react-icons/bs";
-
 // Date format package
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
@@ -21,7 +17,7 @@ const CodeDetails = ({ code }) => {
   const handleClick = async () => {
     // if no user don't even bother executing
     if (!user) return;
-
+    // Try deleting the ID of code from database
     try {
       console.log(code._id);
       // `https://mern-code-back.onrender.com/api/code/${code._id}`,
@@ -32,6 +28,7 @@ const CodeDetails = ({ code }) => {
         },
       });
       console.log(user.token);
+      // If response 200, dispatch the DELETE useReducer function
       if (res.ok) {
         const resDatas = await res.json();
         dispatch({ type: "DELETE_CODE", payload: resDatas });
@@ -113,15 +110,24 @@ const CodeDetails = ({ code }) => {
         <div className="px-8 my-5 w-full ">
           <div className="flex justify-between w-full ">
             <h4 className="text-secondary font-bold pb-3 pr-3">{code.title}</h4>
-            <h4 className="text-secondary font-bold pb-3 pr-3">{code.description}</h4>
-            <h4 className="text-secondary font-bold pb-3 pr-3">{code.language}</h4>
+            <h4 className="text-secondary font-bold pb-3 pr-3">
+              {code.description}
+            </h4>
+            <h4 className="text-secondary font-bold pb-3 pr-3">
+              {code.language}
+            </h4>
+            <p className="text-textcolor">
+              {formatDistanceToNow(new Date(code.createdAt), {
+                addSuffix: true,
+              })}
+            </p>
             <button onClick={handleClick}>
               <BsFillTrashFill />
             </button>
           </div>
 
           <Editor
-          className="transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out"
+            className="transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out"
             height="400px"
             width="400px"
             theme="vs-dark"
@@ -130,6 +136,22 @@ const CodeDetails = ({ code }) => {
             defaultLanguage={code.language}
             defaultValue={code.code}
           />
+        </div>
+      </div>
+      <div className="w-full bg-slate-400 px-2 py-1 rounded-md">
+        <div className="flex flex-col justify-between">
+          <div className="flex space-x-4">
+          <span>{code.title}</span>
+          <span>{code.language}</span>
+          </div>
+          <div>
+          <span>{code.description}</span>
+          </div>
+          <span className="text-textcolor">
+            {formatDistanceToNow(new Date(code.createdAt), {
+              addSuffix: true,
+            })}
+          </span>
         </div>
       </div>
     </div>
