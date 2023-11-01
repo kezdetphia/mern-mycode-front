@@ -1,15 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import { useCodesContext } from "../hooks/useCodesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const CodeForm = () => {
+  const editorRef = useRef(null);
+
   // Destructure state variables directly
   const { dispatch } = useCodesContext();
   const { user } = useAuthContext();
 
   // State for code data and error message
-  const [error, setError] = useState()
+  const [error, setError] = useState();
   const [code, setCode] = useState({
     title: "",
     description: "",
@@ -17,12 +19,41 @@ const CodeForm = () => {
     code: "Your code is here",
   });
 
-  const editorRef = useRef(null);
-
   // Function to handle editor mount
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
   }
+
+  // Update editor size when the window is resized
+  useEffect(() => {
+    const handleResize = () => {
+      if (editorRef.current) {
+        const container = editorRef.current.getDomNode().parentElement;
+        if (container) {
+          // Calculate the available width and height within the container
+          const availableWidth = container.clientWidth;
+          const availableHeight = window.innerHeight - container.offsetTop; // You may adjust this calculation
+
+          // Set the editor's dimensions
+          editorRef.current.layout({
+            width: availableWidth,
+            height: availableHeight,
+          });
+        }
+      }
+    };
+
+    // Attach the resize listener
+    window.addEventListener("resize", handleResize);
+
+    // Call it initially to set the correct size
+    handleResize();
+
+    // Clean up the listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   // Function to update code data when input fields change
   const handleInputChange = (e) => {
@@ -65,7 +96,7 @@ const CodeForm = () => {
           title: "",
           description: "",
           language: "",
-          code: "Your code is here",
+          code: "",
         });
       }
     } catch (err) {
@@ -76,15 +107,56 @@ const CodeForm = () => {
   // Determine whether the user is logged in
   const isUserLoggedIn = !!user;
 
+  const languages = [
+    "Java",
+    "PHP",
+    "Python",
+    "JavaScript",
+    "C++",
+    "C#",
+    "Ruby",
+    "Swift",
+    "Go",
+    "Kotlin",
+    "Rust",
+    "TypeScript",
+    "Scala",
+    "HTML/CSS",
+    "SQL",
+    "Bash/Shell scripting",
+    "MATLAB",
+    "R",
+    "Perl",
+    "Dart (for Flutter)",
+    "Objective-C",
+    "Assembly language",
+    "COBOL",
+    "Lua",
+    "Groovy",
+    "VHDL",
+    "Ada",
+    "Fortran",
+    "Prolog",
+    "Lisp",
+  ];
+
   return (
     <div>
       <div className="w-full h-full">
-        <input
+        <label>Choose a language</label>
+        <select
           name="language"
-          placeholder="Language"
+          // placeholder="Language"
           value={code.language}
           onChange={handleInputChange}
-        />
+        >
+          {languages.map((language) => (
+            <option key={language} value={language}>
+              {language}
+            </option>
+          ))}
+        </select>
+
         <input
           name="title"
           placeholder="Name"
@@ -98,21 +170,25 @@ const CodeForm = () => {
           onChange={handleInputChange}
         />
 
-        <button onClick={() => setCode({ ...code, language: "html" })}>
-          Switch to HTML
-        </button>
+        {isUserLoggedIn && (
+          <button
+            className="bg-mygreen rounded-md px-2 py-1"
+            onClick={submitCode}
+          >
+            Save
+          </button>
+        )}
 
-        {isUserLoggedIn && <button onClick={submitCode}>Save</button>}
-
-        <Editor
-          height="400px"
-          width="400px"
-          theme="vs-dark"
-          onMount={handleEditorDidMount}
-          path={code.title}
-          defaultLanguage={code.language}
-          defaultValue={code.code}
-        />
+        <div className="relative w-full h-screen">
+          <Editor
+           
+            theme="vs-dark"
+            onMount={handleEditorDidMount}
+            path={code.title}
+            defaultLanguage={code.language}
+            defaultValue={code.code}
+          />
+        </div>
         {error && <div className="text-red-500">{error}</div>}
       </div>
     </div>
