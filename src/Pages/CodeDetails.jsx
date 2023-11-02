@@ -11,13 +11,11 @@ import { useNavigate } from "react-router-dom";
 
 
 const CodeDetail = () => {
-const navigate = useNavigate();
-
-
+  const navigate = useNavigate();
   const { id } = useParams();
   const { user } = useAuthContext();
   const { dispatch } = useCodesContext();
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState(null);
 
   useEffect(() => {
     const fetchCodeDetails = async () => {
@@ -26,27 +24,31 @@ const navigate = useNavigate();
         console.log("User is not authenticated");
         return;
       }
+
       try {
         const response = await fetch(`http://localhost:4000/api/codes/${id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         });
+
         console.log(user.token);
+
         if (response.ok) {
           const codeData = await response.json();
           setCode(codeData);
         } else {
-          console.log('this is id',id);
+          console.log('code not found');
           // Handle error when code is not found
         }
       } catch (error) {
-        // Handle other errors
+        console.error("Erro fetching code: ", error)
       }
     };
 
     fetchCodeDetails();
   }, [id, user.token, dispatch]);
+
 
   const handleClick = async () => {
     if (!user) {
@@ -54,6 +56,7 @@ const navigate = useNavigate();
       console.log("User is not authenticated");
       return;
     }
+
     try {
       console.log(code._id);
       const res = await fetch(`http://localhost:4000/api/codes/${id}`, {
@@ -62,7 +65,9 @@ const navigate = useNavigate();
           Authorization: `Bearer ${user.token}`,
         },
       });
+
       console.log(user.token);
+
       if (res.ok) {
         const resDatas = await res.json();
         dispatch({ type: "DELETE_CODE", payload: resDatas });
@@ -74,7 +79,7 @@ const navigate = useNavigate();
         console.error("Delete failed with status: ", res.statusText);
       }
     } catch (err) {
-      console.log("Error:", err);
+      console.log("Error deleting code:", err);
     }
   };
 

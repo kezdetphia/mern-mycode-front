@@ -29,8 +29,8 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="flex justify-center sm:pt-40  bg-background  ">
-      <div className="bg-cardbg border rounded-md sm:w-96 w-full px-7 ">
+    <div className="flex justify-center h-screen sm:pt-40  bg-backg  ">
+      <div className="bg-cardbg border rounded-md sm:w-96  px-7 ">
         <div className="text-2xl font-bold mt-10 mx-2 ">
           {headerInstruction}
         </div>
@@ -63,7 +63,7 @@ const SignupPage = () => {
             </button>
             <div className="flex items-center text-sm pt-1 hover:text-highlight ">
               <Link to="/login">
-                <h1 className="px-4 text-textcolor text-xs pt-3"> Login </h1>
+                <h1 className="px-4 text-gray-400 text-xs pt-3"> Login </h1>
               </Link>
             </div>
 

@@ -29,7 +29,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center sm:pt-40  bg-background  ">
+    <div className="flex justify-center sm:pt-40 h-screen  bg-backg  ">
       <div className="bg-white border rounded-md sm:w-96 sm:h-1/2 w-full  px-7   ">
         <div className="text-2xl font-bold mt-10 mx-2 text-textcolor ">
           {headerInstruction}
@@ -62,14 +62,14 @@ const LoginPage = () => {
               Login
             </button>
           </div>
-          <span className="text-xs flex justify-center sm:pt-5 pt-3">
+          <span className="text-xs flex justify-center text-gray-400 sm:pt-5 pt-3">
             Don't have an account yet?
           </span>
           <Link
-            className="text-xs flex justify-center pt-1 mb-5  hover:text-highlight"
+            className="text-xs flex justify-center pt-1 mb-5  text-gray-400  hover:text-white"
             to="/signup"
           >
-            Register
+            Sign Up
           </Link>
 
           <span className="">{error && <div>{error}</div>}</span>
