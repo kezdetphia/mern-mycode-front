@@ -69,7 +69,7 @@ function App() {
             {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
             
           <Route
-            path="/details"
+            path='/:id'
             element={ <CodeDetails />}
           />
 

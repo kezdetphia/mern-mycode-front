@@ -1,100 +1,53 @@
-// Hooks import
-import { useState, useRef, useEffect } from "react";
-// Context import
-import { useCodesContext } from "../hooks/useCodesContext";
-import { useAuthContext } from "../hooks/useAuthContext";
-// Embedded code editor import
-import Editor from "@monaco-editor/react";
-// Icon import
-import { BsFillTrashFill } from "react-icons/bs";
-// Date format package
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import {useAuthContext} from '../hooks/useAuthContext'
 
+const CodeDetail = () => {
+  const { id } = useParams(); // Get the code ID from the URL
+    const { user } = useAuthContext();
 
+  const [code, setCode] = useState(null);
+  console.log('this id', id)
+  useEffect(() => {
 
-const CodeDetails = () => {
-
-  const { dispatch, codes } = useCodesContext();
-  const { user } = useAuthContext();
-
-
-
-  console.log(codes)
-
-
-  const handleClick = async () => {
-    
-    // if no user don't even bother executing
-    if (!user) return;
-    // Try deleting the ID of code from database
-    try {
-      console.log('this is codes._id in delete fech',codes._id);
-      // `https://mern-code-back.onrender.com/api/code/${code._id}`,
-      const res = await fetch(`http://localhost:4000/api/codes/${codes._id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      console.log(user.token);
-      // If response 200, dispatch the DELETE useReducer function
-      if (res.ok) {
-        const resDatas = await res.json();
-        dispatch({ type: "DELETE_CODE", payload: resDatas });
-        console.log("New code deleted", resDatas);
-      } else {
-        console.error("Delete failed with status: ", res.statusText);
+    // Fetch the code details based on codeId
+    const fetchCodeDetails = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/codes/${id}`, {
+            headers: {
+              Authorization : `Bearer ${user.token}`
+            },
+          });
+          console.log(user.token)
+        if (response.ok) {
+          const codeData = await response.json();
+          setCode(codeData);
+        } else {
+          console.log(id)
+          // Handle error when code is not found
+        }
+      } catch (error) {
+        // Handle other errors
       }
-    } catch (err) {
-      console.log("Error:", err);
-    }
-  };
+    };
 
- 
+    fetchCodeDetails();
+  }, [id]);
 
   return (
-    <div className="flex flex-col  h-full m-20 ">
-            {codes.map((code)=>(
-      <div className=" transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
-        <div className="w-full  bg-search text-gray-300 rounded-md">
-          <div className="flex py-2 justify-between">
-
-            <div className="flex pl-3 ">
-              <span>{code.language}</span>
-              <span className="">{code.title}</span>
-            </div>
-          
-            <div className="flex ">
-              <span className="text-gray-300 pr-4">
-                {code.createdAt
-                  ? formatDistanceToNow(new Date(code.createdAt), {
-                      addSuffix: true,
-                    })
-                  : null}
-              </span>
-              <button className="pr-4" onClick={handleClick}>
-                <BsFillTrashFill />
-              </button>
-            </div>
-          </div>
-
-          <p className="pl-3 pb-1">{code.description}</p>
+    <div>
+      {code ? (
+        <div>
+          <h2>{code.title}</h2>
+          <p>{code.language}</p>
+          {/* Display other code details */}
         </div>
-
-        <div className="  ">
-          <Editor
-            className="h-[600px]   "
-            theme="vs-dark"
-            // onMount={handleEditorDidMount}
-            path={code.title}
-            defaultLanguage={code.language}
-            defaultValue={code.code}
-          />
-        </div>
-      </div>
-        ))}
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
 
-export default CodeDetails;
+export default CodeDetail;

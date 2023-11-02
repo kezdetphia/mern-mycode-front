@@ -1,5 +1,6 @@
 // Hooks import
 import { useState, useRef } from "react";
+import {Link } from 'react-router-dom'
 // Context import
 import { useCodesContext } from "../hooks/useCodesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -51,40 +52,42 @@ const CodeInfo = ({ code }) => {
 
   return (
     <div className="flex flex-col m-10 ">
-      <div className=" transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
-        <div className="w-full  bg-search text-gray-300 rounded-md">
-          <div className="flex py-2 justify-between">
-            <div className="flex pl-3 ">
-              <span>{code.language}</span>
-              <span className="">{code.title}</span>
+      <Link to={`/${code._id}`}>
+        <div className=" transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
+          <div className="w-full  bg-search text-gray-300 rounded-md">
+            <div className="flex py-2 justify-between">
+              <div className="flex pl-3 ">
+                <span>{code.language}</span>
+                <span className="">{code.title}</span>
+              </div>
+
+              <div className="flex ">
+                <span className="text-gray-300 pr-4">
+                  {formatDistanceToNow(new Date(code.createdAt), {
+                    addSuffix: true,
+                  })}
+                </span>
+                <button className="pr-4" onClick={handleClick}>
+                  <BsFillTrashFill />
+                </button>
+              </div>
             </div>
 
-            <div className="flex ">
-              <span className="text-gray-300 pr-4">
-                {formatDistanceToNow(new Date(code.createdAt), {
-                  addSuffix: true,
-                })}
-              </span>
-              <button className="pr-4" onClick={handleClick}>
-                <BsFillTrashFill />
-              </button>
-            </div>
+            <p className="pl-3 pb-1">{truncateDescription(code.description)}</p>
           </div>
 
-          <p className="pl-3 pb-1">{truncateDescription(code.description)}</p>
+          <div className="  ">
+            <Editor
+              className="h-40   "
+              theme="vs-dark"
+              // onMount={handleEditorDidMount}
+              path={code.title}
+              defaultLanguage={code.language}
+              defaultValue={code.code}
+            />
+          </div>
         </div>
-
-        <div className="  ">
-          <Editor
-            className="h-40   "
-            theme="vs-dark"
-            // onMount={handleEditorDidMount}
-            path={code.title}
-            defaultLanguage={code.language}
-            defaultValue={code.code}
-          />
-        </div>
-      </div>
+      </Link>
     </div>
   );
 };

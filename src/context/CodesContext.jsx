@@ -11,15 +11,11 @@ export const codesReducer=(state, action)=>{
     case 'DELETE_CODE': return (
       {codes: state.codes.filter(code => code._id !== action.payload._id)}
     )
-   
-    // case 'EDIT_CODE': return 
-    //   {codes: state.codes.map(code => {
-    //     if (code._id === action.paylod._id){
-    //       return {...code, ... action.payload.editedCode }
-    //     }else{
-    //       return code
-    //     }
-    //   }) }
+    
+    case 'GET_ONE_CODE': 
+      const foundCode = state.codes.filter(code => code._id == action.payload._id)
+      return foundCode ? {code: foundCode} : state
+    
     default: return state
   }
 }
