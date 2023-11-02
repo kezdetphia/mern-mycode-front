@@ -1,5 +1,5 @@
 // Hooks import
-import { useState, useRef } from "react";
+
 import {Link } from 'react-router-dom'
 // Context import
 import { useCodesContext } from "../hooks/useCodesContext";
