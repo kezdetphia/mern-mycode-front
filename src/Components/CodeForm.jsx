@@ -107,6 +107,7 @@ const CodeForm = () => {
   };
 
   const languages = [
+    "Language",
     "JavaScript",
     "Python",
     "Java",
@@ -140,11 +141,11 @@ const CodeForm = () => {
   ];
 
   return (
-    <div className="m-10 ">
+    <div className="sm:m-10 w-full h-full ">
       <div className=" ">
-        <div className="flex  ">
+        <div className="flex sm:flex-row flex-col space-y-2 ">
           <select
-            className="bg-urllink text-gray-500 justify-center flex items-center py-2 rounded-lg pl-2"
+            className="bg-urllink text-gray-500 justify-center flex items-center py-2 rounded-lg pl-2 mt-2"
             name="language"
             // placeholder="Language"
             value={code.language}
@@ -158,14 +159,14 @@ const CodeForm = () => {
           </select>
 
           <input
-            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 ml-2"
+            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 py-1 sm:ml-2"
             name="title"
             placeholder="Name"
             value={code.title}
             onChange={handleInputChange}
           />
           <input
-            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 ml-2"
+            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 py-1 sm:ml-2 "
             name="description"
             placeholder="Description"
             value={code.description}
@@ -174,17 +175,17 @@ const CodeForm = () => {
         </div>
         {isUserLoggedIn && (
           <button
-            className="bg-mygreen rounded-md px-2 py-1 min-w-full"
+            className="bg-mygreen rounded-md px-2 py-1 mt-2  min-w-full"
             onClick={submitCode}
           >
             Save
           </button>
         )}
 
-        <div className="relative w-full h-[600px] ">
+        <div className="flex w-full h-[600px] ">
           <Editor
-          name='code'
-          value={code.code}
+            name="code"
+            value={code.code}
             theme="vs-dark"
             onMount={handleEditorDidMount}
             path={code.title}
