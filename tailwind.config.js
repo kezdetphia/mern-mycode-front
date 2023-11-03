@@ -4,10 +4,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#3498db",
-        secondary: "#f1c40f",
-        background: "#f0f0f0",
-        textcolor: "#333333",
         mygreen: "#2ecc71",
         error: "#e74c3c",
         cardbg: "#f9f9f9",
@@ -15,6 +11,9 @@ module.exports = {
         backg: "#2B2A33",
         urllink: "#1C1B22",
         search: "#42414D",
+        darkpink: "#B64FC5",
+        mediumpink: "#EA80F8",
+        lightpink: "#FFB2FC",
       },
     },
     fontFamily: {

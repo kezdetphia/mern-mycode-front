@@ -42,7 +42,7 @@ const CodeInfo = ({ code }) => {
     }
   };
 
-  const maxDescriptionLength = 50;
+  const maxDescriptionLength = 30;
   const truncateDescription = (text) => {
     if (text.length <= maxDescriptionLength) {
       return text;
@@ -51,7 +51,7 @@ const CodeInfo = ({ code }) => {
   };
 
   return (
-    <div className="flex flex-col m-10 ">
+    <div className="flex flex-col sm:m-10 mx-5 ">
       <Link to={`/${code._id}`}>
         <div className=" transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
           <div className="w-full  bg-search text-gray-300 rounded-md">
