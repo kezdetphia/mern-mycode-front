@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+// Custom Hooks
+
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCodesContext } from "../hooks/useCodesContext";
+// Packages
+
 import Editor from "@monaco-editor/react";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-
 import { BsFillTrashFill } from "react-icons/bs";
-
-import { useNavigate } from "react-router-dom";
-
 
 const CodeDetail = () => {
   const navigate = useNavigate();
@@ -32,23 +32,18 @@ const CodeDetail = () => {
           },
         });
 
-        console.log(user.token);
-
         if (response.ok) {
           const codeData = await response.json();
           setCode(codeData);
         } else {
-          console.log('code not found');
-          // Handle error when code is not found
+          console.log("Codedata not found! Statuscode:", response.statusText);
         }
       } catch (error) {
-        console.error("Erro fetching code: ", error)
+        console.error("Error fetching the the code data: ", error);
       }
     };
-
     fetchCodeDetails();
-  }, [id, user.token, dispatch]);
-
+  }, [id, user, dispatch]);
 
   const handleClick = async () => {
     if (!user) {
@@ -58,71 +53,76 @@ const CodeDetail = () => {
     }
 
     try {
-      console.log(code._id);
-      const res = await fetch(`http://localhost:4000/api/codes/${id}`, {
+      const response = await fetch(`http://localhost:4000/api/codes/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
-
-      console.log(user.token);
-
-      if (res.ok) {
-        const resDatas = await res.json();
-        dispatch({ type: "DELETE_CODE", payload: resDatas });
-        console.log("New code deleted", resDatas);
-
+      if (response.ok) {
+        const responseCodes = await response.json();
+        dispatch({ type: "DELETE_CODE", payload: responseCodes });
+        console.log("New codedata deleted: ", responseCodes);
         // Redirect the user back to the HomeCode page
         navigate("/");
       } else {
-        console.error("Delete failed with status: ", res.statusText);
+        console.error("Delete failed with status: ", response.statusText);
       }
     } catch (err) {
-      console.log("Error deleting code:", err);
+      console.log("Error deleting codedata:", err);
     }
   };
 
   return (
-    <div>
-      {code ? (
-        <div className=" h-screen m-10">
-          <div className="w-full  bg-search text-gray-300 rounded-md">
-            <div className="flex py-2 justify between">
-              <div className="flex pl-3 ">
-                <span>{code.language}</span>
-                <span className="">{code.title}</span>
+    <main className=" bg-backg flex">
+      <div className="Editor w-3/4 border border-lightpink shadow-lg ">
+        {code ? (
+          <>
+            <div className="TitleBar flex justify-between items-center border border-lightpink shadow-lg text-gray-400 sm:py-2 ">
+              <div>
+                <span className=" sm:ml-3">{code.language}</span>
+                <span className=" sm:ml-3">{code.title}</span>
               </div>
-
-              <div className="flex ">
-                <span className="text-gray-300 pr-4">
+              <div>
+                <span className=" sm:mr-3">
                   {formatDistanceToNow(new Date(code.createdAt), {
                     addSuffix: true,
                   })}
                 </span>
-                <button className="pr-4" onClick={handleClick}>
-                  <BsFillTrashFill />
+                <button className="sm:mr-3" onClick={handleClick}>
+                  <BsFillTrashFill />{" "}
                 </button>
               </div>
             </div>
 
-            <p className="pl-3 pb-1">{code.description}</p>
-          </div>
-
-          <div className="  ">
             <Editor
-              className="h-[600px]   "
+              className="h-screen"
               theme="vs-dark"
               path={code.title}
               defaultLanguage={code.language}
               defaultValue={code.code}
             />
-          </div>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+
+      <div className="description w-1/4   border border-lightpink shadow-lg  ">
+        {code ? 
+
+
+        <div className="text-gray-400 sm:m-2">
+          {code.description}
+          </div> 
+
+
+
+
+        :
+         <p>Loading...</p>}
+      </div>
+    </main>
   );
 };
 

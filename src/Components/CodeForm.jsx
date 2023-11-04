@@ -108,8 +108,8 @@ const CodeForm = () => {
 
   const languages = [
     "Language",
-    "JavaScript",
-    "Python",
+    "javascript",
+    "python",
     "Java",
     "C#",
     "C++",
@@ -143,7 +143,7 @@ const CodeForm = () => {
   return (
     <div className="sm:m-10 m-5 w-full h-full bg-search rounded-lg p-3 ">
       <div className=" ">
-        <span>HEllo</span>
+
         <div className="flex sm:flex-row flex-col space-y-2 ">
           <select
             className="bg-urllink text-gray-500 justify-center flex items-center py-2 rounded-lg pl-2 mt-2"

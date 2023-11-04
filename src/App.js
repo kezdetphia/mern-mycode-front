@@ -47,7 +47,7 @@ function App() {
 
 
   return (
-    <div className="bg-backg h-full w-full font-custom">
+    <div className="bg-backg font-custom">
       <BrowserRouter>
         <Navbar />
     

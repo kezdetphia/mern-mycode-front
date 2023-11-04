@@ -35,7 +35,7 @@ const Home = () => {
 
 
   return (
-    <div className="Home bg-background flex flex-col sm:flex-row my-10 w-screen h-full md:px-10 space-between">
+    <div className="Home flex flex-col sm:flex-row   h-full  ">
 
       <div className=" flex justify-center sm:pl-5 ">
           <WorkoutForm />
