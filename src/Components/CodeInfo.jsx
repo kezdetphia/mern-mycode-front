@@ -1,6 +1,6 @@
 // Hooks import
 
-import {Link } from 'react-router-dom'
+import {Link ,useNavigate } from 'react-router-dom'
 // Context import
 import { useCodesContext } from "../hooks/useCodesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -12,6 +12,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const CodeInfo = ({ code }) => {
+  const navigate = useNavigate();
   const { dispatch } = useCodesContext();
   const { user } = useAuthContext();
 
@@ -34,6 +35,8 @@ const CodeInfo = ({ code }) => {
         const resDatas = await res.json();
         dispatch({ type: "DELETE_CODE", payload: resDatas });
         console.log("New code deleted", resDatas);
+        
+        navigate("/");
       } else {
         console.error("Delete failed with status: ", res.statusText);
       }
@@ -59,6 +62,7 @@ const CodeInfo = ({ code }) => {
               <div className="flex pl-3 ">
                 <span>{code.language}</span>
                 <span className="">{code.title}</span>
+    
               </div>
 
               <div className="flex ">

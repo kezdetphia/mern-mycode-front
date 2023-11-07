@@ -22,6 +22,7 @@ import LandingPage from "./Pages/LandingPage";
 function App() {
   const { user } = useAuthContext();
   const { dispatch, codes } = useCodesContext();
+  console.log('app.js render')
 
   useEffect(() => {
     const fetchCodes = async () => {
