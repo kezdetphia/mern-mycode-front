@@ -99,7 +99,7 @@ const CodeForm = () => {
       setCode({
         title: "",
         description: "",
-        language: "",
+        language: "javascript",
         code: "",
     });
   } catch (err) {
@@ -192,7 +192,8 @@ const CodeForm = () => {
             onMount={handleEditorDidMount}
             // path={code.title}
             defaultLanguage='javascript'
-            defaultValue={code.code}
+            // defaultValue={code.code}
+            onChange={(newCode)=> setCode({...code, code: newCode})}
           />
         </div>
         {error && <div className="text-red-500">{error}</div>}
