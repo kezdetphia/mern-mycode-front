@@ -107,7 +107,6 @@ const CodeForm = () => {
   };
 
   const languages = [
-    "Language",
     "javascript",
     "python",
     "Java",
@@ -185,12 +184,13 @@ const CodeForm = () => {
 
         <div className="flex w-full h-[600px] ">
           <Editor
+          className="h-full"
             name="code"
             value={code.code}
             theme="vs-dark"
             onMount={handleEditorDidMount}
-            path={code.title}
-            defaultLanguage={code.language}
+            // path={code.title}
+            defaultLanguage='javascript'
             // defaultValue={code.code}
           />
         </div>

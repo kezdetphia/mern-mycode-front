@@ -62,16 +62,18 @@ const LoginPage = () => {
               >
                 Login
               </button>
-            </div>
-            <div className="flex items-center justify-center pt-3">
-              <Link to="/SIGNUP">
-                <span className="px-4 text-gray-400 text-xs pt-3">
-                  Don't have an account yet?{" "}
-                  <span className=" hover:text-mygreen">Sign Up </span>
-                </span>
-              </Link>
+              <div className="flex items-center text-md pt-1 hover:text-highlight ">
+                <Link to="/login">
+                  <span className="px-4 text-gray-400 text-xs pt-3">
+                    Don't have an account yet'{" "}
+                    <span className=" hover:text-mygreen">Sign Up </span>
+                  </span>
+                </Link>
+              </div>
 
-              <span className="text-error">{error && <div>{error}</div>}</span>
+              <div className="flex justify-center  text-error text-sm">
+                <div className="">{error && <div>{error}</div>}</div>
+              </div>
             </div>
           </form>
         </div>

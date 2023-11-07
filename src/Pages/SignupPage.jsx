@@ -15,8 +15,8 @@ const SignupPage = () => {
 
   const {
     signup,
-    signupError: error,
-    signupIsLoading: isLoading,
+    error,
+    isLoading,
   } = useSignup();
 
   const handleChange = (e) => {
@@ -75,7 +75,7 @@ const SignupPage = () => {
               </Link>
             </div>
 
-            <div className="flex justify-center mt-10 text-error text-sm">
+            <div className="flex justify-center  text-error text-sm">
               <div className="">{error && <div>{error}</div>}</div>
             </div>
           </div>
