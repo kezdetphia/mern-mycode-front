@@ -17,7 +17,7 @@ const CodeForm = () => {
   const [code, setCode] = useState({
     title: "",
     description: "",
-    language: "",
+    language: "javascript",
     code: "Your code is here",
   });
 
@@ -94,17 +94,18 @@ const CodeForm = () => {
         setError(null);
         dispatch({ type: "CREATE_CODE", payload: resJson });
         // Reset the code state to clear the input fields
-        setCode({
-          title: "",
-          description: "",
-          language: "",
-          code: "",
-        });
       }
-    } catch (err) {
-      console.log("Error:", err);
-    }
-  };
+
+      setCode({
+        title: "",
+        description: "",
+        language: "",
+        code: "",
+    });
+  } catch (err) {
+    console.log("Error:", err);
+  }
+};
 
   const languages = [
     "javascript",
@@ -182,7 +183,7 @@ const CodeForm = () => {
           </button>
         )}
 
-        <div className="flex w-full h-[600px] ">
+        <div className="flex w-full h-[500px] ">
           <Editor
           className="h-full"
             name="code"
@@ -191,7 +192,7 @@ const CodeForm = () => {
             onMount={handleEditorDidMount}
             // path={code.title}
             defaultLanguage='javascript'
-            // defaultValue={code.code}
+            defaultValue={code.code}
           />
         </div>
         {error && <div className="text-red-500">{error}</div>}

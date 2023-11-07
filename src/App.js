@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="bg-backg font-custom">
       <BrowserRouter>
-        <Navbar />(
+        <Navbar />
         <Routes>
           <Route
             path="/"
@@ -63,12 +63,12 @@ function App() {
             element={!user ? <LoginPage /> : <Navigate to="/" />}
           />
 
-          <Route path="/editor" element={<CodeForm />} />
           {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
 
           <Route path="/:id" element={<CodeDetails />} />
 
           <Route path="/landing" element={<LandingPage />} />
+          
         </Routes>
       </BrowserRouter>
     </div>
