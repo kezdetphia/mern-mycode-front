@@ -32,11 +32,11 @@ const HomeCode = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="Home bg-backg flex flex-col sm:flex-row  space-between ">
-      <div className=" flex justify-center   ">
+    <div className="Home h-screen bg-backg flex flex-col sm:flex-row  space-between ">
+      <div className=" flex justify-center    ">
         <CodeForm />
       </div>
-      <div className="codes pt-5 sm:pt-0 my-10 w-full ">
+      <div className="codes pt-5 sm:pt-0  w-full overflow-scroll ">
         {codes &&
           codes.map((code) => <CodeInfo key={code._id} code={code} />)}
       </div>
