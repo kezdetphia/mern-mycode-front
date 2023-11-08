@@ -140,12 +140,11 @@ const CodeForm = () => {
   ];
 
   return (
-    <div className="sm:m-10 m-5 w-full bg-search rounded-lg p-3 ">
+    <div className="sm:m-10 m-5 w-full bg-search rounded-lg p-3  ">
       <div className=" ">
-
         <div className="flex sm:flex-row flex-col space-y-2 ">
           <select
-            className="bg-urllink text-gray-500 justify-center flex items-center py-2 rounded-lg pl-2 mt-2"
+            className="bg-urllink text-gray-500 justify-center flex items-center py-2 rounded-lg pl-2 mt-2  "
             name="language"
             // placeholder="Language"
             value={code.language}
@@ -184,15 +183,15 @@ const CodeForm = () => {
 
         <div className="flex w-full h-[550px] ">
           <Editor
-          className="h-full"
+            className="h-full"
             name="code"
             value={code.code}
             theme="vs-dark"
             onMount={handleEditorDidMount}
             // path={code.title}
-            defaultLanguage='javascript'
+            defaultLanguage="javascript"
             // defaultValue={code.code}
-            onChange={(newCode)=> setCode({...code, code: newCode})}
+            onChange={(newCode) => setCode({ ...code, code: newCode })}
           />
         </div>
         {error && <div className="text-red-500">{error}</div>}

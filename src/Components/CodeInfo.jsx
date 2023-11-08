@@ -55,7 +55,7 @@ const CodeInfo = ({ code }) => {
   };
 
   return (
-    <div className="flex flex-col sm:m-10 mx-5 ">
+    <div className="flex flex-col sm:m-10 mx-5  ">
       <Link to={`/${code._id}`}>
         <div className=" transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
           <div className="w-full  bg-search text-gray-300 rounded-md">
@@ -63,7 +63,6 @@ const CodeInfo = ({ code }) => {
               <div className="flex pl-3 ">
                 <span>{code.language}</span>
                 <span className="pl-3">{code.title}</span>
-    
               </div>
 
               <div className="flex ">

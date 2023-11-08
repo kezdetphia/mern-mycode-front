@@ -10,16 +10,18 @@ const LandingPage = () => {
     "We're committed to improving our app and adding new features based on user feedback.",
     "Say goodbye to code hunting and repetitive tasks, and focus on what you do best: programming.",
   ];
- 
-  return (
-    <div className="h-screen w-full    ">
-      <div className="text-center sm:py-4">
-        <h1 className="text-white text-6xl">
-          <span className="text-gray-400">Welcome to</span> myCode
-        </h1>
-        <div className="line h-1 w-24 border-darkpink bg-darkpink "></div>
 
-        <span className="text-gray-400 text-bold text-xl">
+  return (
+    <div className="h-screen w-full  ">
+      <div className="text-center flex flex-col sm:py-4">
+
+        <span className="text-gray-400 relative">
+  
+          <span className="border-b border-lightpink text-6xl">Welc</span>
+        <span className="text-6xl">ome to </span> <span className="text-6xl text-white"> myCode</span>
+        </span>
+
+        <span className="text-gray-400 text-bold text-xl sm:pt-5">
           Where Your Code Finds a Home{" "}
         </span>
       </div>
