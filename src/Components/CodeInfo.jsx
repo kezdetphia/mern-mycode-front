@@ -12,6 +12,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const CodeInfo = ({ code }) => {
+  console.log('CodeInfo.jsx render')
   const navigate = useNavigate();
   const { dispatch } = useCodesContext();
   const { user } = useAuthContext();
@@ -61,7 +62,7 @@ const CodeInfo = ({ code }) => {
             <div className="flex py-2 justify-between">
               <div className="flex pl-3 ">
                 <span>{code.language}</span>
-                <span className="">{code.title}</span>
+                <span className="pl-3">{code.title}</span>
     
               </div>
 
