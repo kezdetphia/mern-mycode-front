@@ -22,7 +22,7 @@ const Navbar = () => {
           <div className="flex items-center ">
             <span className="text-gray-400 text-xs">{user.email}</span>
             <button
-              className="px-2 py-1 ml-3 bg-backg rounded-md text-gray-400 hover:bg-search"
+              className="px-2 py-1 ml-3 bg-backg rounded-md text-gray-400 hover:bg-search   hover:border border-darkpink "
               onClick={handleLogout}
             >
               Logout
