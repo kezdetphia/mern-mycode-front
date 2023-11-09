@@ -5,12 +5,8 @@ import { useCodesContext } from "./hooks/useCodesContext";
 import { useEffect } from "react";
 
 //pages & components
-import Home from "./Pages/Home";
-
 import HomeCode from "./Pages/HomeCode";
-
 import Navbar from "./Components/Navbar";
-import WorkoutForm from "./Components/WorkoutForm";
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import CodeForm from "./Components/CodeForm";

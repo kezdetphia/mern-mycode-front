@@ -181,9 +181,9 @@ const CodeForm = () => {
           </button>
         )}
 
-        <div className="flex w-full sm:h-[550px] h-[200px]  ">
+        <div className="flex sm:w-full sm:h-full   ">
           <Editor
-            className="h-full"
+            className="sm:h-[550px] h-[200px]"
             name="code"
             value={code.code}
             theme="vs-dark"

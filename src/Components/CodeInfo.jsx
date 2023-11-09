@@ -1,5 +1,4 @@
 // Hooks import
-
 import {Link ,useNavigate } from 'react-router-dom'
 // Context import
 import { useCodesContext } from "../hooks/useCodesContext";
@@ -82,7 +81,7 @@ const CodeInfo = ({ code }) => {
 
           <div className="  ">
             <Editor
-              className="sm:h-40 h-20   "
+              className="h-40   "
               theme="vs-dark"
               // onMount={handleEditorDidMount}
               path={code.title}

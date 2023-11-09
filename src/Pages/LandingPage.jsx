@@ -12,13 +12,12 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="h-screen w-full  ">
+    <div className="h-full w-full">
       <div className="text-center flex flex-col py-4">
-
         <span className="text-gray-400 relative">
-  
           <span className="border-b border-lightpink text-6xl">Welc</span>
-        <span className="text-6xl">ome to </span> <span className="text-6xl text-white "> myCode</span>
+          <span className="text-6xl">ome to </span>{" "}
+          <span className="text-6xl text-white "> myCode</span>
         </span>
 
         <span className="text-gray-400 text-bold text-xl  pt-5">
@@ -26,16 +25,30 @@ const LandingPage = () => {
         </span>
       </div>
 
-      <div className="grid sm:grid-cols-3 grid-cols-2 gap-4 py-5 px-4 ">
-        {messages.map((message, id) => (
-          <span
-            key={id}
-            className="border rounded-2xl border-darkpink  p-2 flex justify-center items-center text-center bg-search text-gray-400 text-md"
-          >
-            {message}
-          </span>
-        ))}
+      <div className="flex  ">
+
+        <div className="w-1/2">
+          <div className="grid sm:grid-cols-3 grid-cols-2 gap-4 py-5 px-4 ">
+            {messages.map((message, id) => (
+              <span
+                key={id}
+                className="border rounded-2xl border-darkpink  p-2 flex justify-center items-center text-center bg-search text-gray-400 text-md"
+              >
+                {message}
+              </span>
+            ))}
+          </div>
+            </div>
+
+          <div className="w-1/2">
+            {messages.map((mes, id) => (
+              <ul key={id}>
+                <li>{mes}</li>
+              </ul>
+            ))}
+          </div>
       </div>
+
     </div>
   );
 };
