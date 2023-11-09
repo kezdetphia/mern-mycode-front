@@ -56,7 +56,7 @@ const CodeInfo = ({ code }) => {
   return (
     <div className="flex flex-col m-10 mx-5   ">
       <Link to={`/${code._id}`}>
-        <div className=" transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
+        <div className=" transform scale-100 hover:scale-102 transition-transform duration-300 ease-in-out">
           <div className="w-full  bg-search text-gray-300 rounded-md flex flex-col">
             <div className="flex sm:flex-row flex-col py-2 justify-between">
               <div className="flex pl-3  sm:flex-row flex-col">
