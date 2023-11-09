@@ -55,7 +55,7 @@ const CodeInfo = ({ code }) => {
   };
 
   return (
-    <div className="flex flex-col sm:m-10 mx-5  ">
+    <div className="flex flex-col m-10 mx-5  ">
       <Link to={`/${code._id}`}>
         <div className=" transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
           <div className="w-full  bg-search text-gray-300 rounded-md">
@@ -82,7 +82,7 @@ const CodeInfo = ({ code }) => {
 
           <div className="  ">
             <Editor
-              className="h-40   "
+              className="sm:h-40 h-20   "
               theme="vs-dark"
               // onMount={handleEditorDidMount}
               path={code.title}

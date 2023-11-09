@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate,  } from "react-router-dom";
 // Custom Hooks
 
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -11,6 +11,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { BsFillTrashFill } from "react-icons/bs";
 
 const CodeDetail = () => {
+  const editorRef = useRef(null);
   const navigate = useNavigate();
   const { id } = useParams();
   const { user } = useAuthContext();
@@ -73,54 +74,84 @@ const CodeDetail = () => {
     }
   };
 
+  // Function to handle editor mount
+  function handleEditorDidMount(editor, monaco) {
+    editorRef.current = editor;
+  }
+
+  // Update editor size when the window is resized
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (editorRef.current) {
+  //       const container = editorRef.current.getDomNode().parentElement;
+  //       if (container) {
+  //         // Calculate the available width and height within the container
+  //         const availableWidth = container.clientWidth;
+  //         const availableHeight = window.innerHeight - container.offsetTop; // You may adjust this calculation
+
+  //         // Set the editor's dimensions
+  //         editorRef.current.layout({
+  //           width: availableWidth,
+  //           height: availableHeight,
+  //         });
+  //       }
+  //     }
+  //   };
+
+  //   // Attach the resize listener
+  //   window.addEventListener("resize", handleResize);
+
+  //   // Call it initially to set the correct size
+  //   handleResize();
+
+  //   // Clean up the listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
+
   return (
-    <main className=" bg-backg flex">
-      <div className="Editor w-3/4 border border-lightpink shadow-lg ">
+    <main className=" bg-backg flex sm:flex-row flex-col-reverse  sm:mx-0  overflow-scroll">
+      <div className="Editor sm:w-3/4 w-full   ">
         {code ? (
           <>
-            <div className="TitleBar flex justify-between items-center border border-lightpink shadow-lg text-gray-400 sm:py-2 ">
+            <div className="TitleBar flex justify-between items-center border border-lightpink shadow-lg text-gray-400 py-2 ">
               <div>
-                <span className=" sm:ml-3">{code.language}</span>
-                <span className=" sm:ml-3">{code.title}</span>
+                <span className=" pl-3">{code.language}</span>
+                <span className="pl-3">{code.title}</span>
               </div>
               <div>
-                <span className=" sm:mr-3">
+                <span className="pr-3">
                   {formatDistanceToNow(new Date(code.createdAt), {
                     addSuffix: true,
                   })}
                 </span>
-                <button className="sm:mr-3" onClick={handleClick}>
+                <button className="pr-3" onClick={handleClick}>
                   <BsFillTrashFill />{" "}
                 </button>
               </div>
             </div>
-
-            <Editor
-              className="h-screen"
-              theme="vs-dark"
-              path={code.title}
-              defaultLanguage={code.language}
-              defaultValue={code.code}
-            />
+            <div className="flex w-full h-screen ">
+              <Editor
+                className="h-full"
+                theme="vs-dark"
+                path={code.title}
+                defaultLanguage={code.language}
+                defaultValue={code.code}
+              />
+            </div>
           </>
         ) : (
           <p>Loading...</p>
         )}
       </div>
 
-      <div className="description w-1/4   border border-lightpink shadow-lg  ">
-        {code ? 
-
-
-        <div className="text-gray-400 sm:m-2">
-          {code.description}
-          </div> 
-
-
-
-
-        :
-         <p>Loading...</p>}
+      <div className="description sm:w-1/4 w-full border border-lightpink sm:border-transparent  ">
+        {code ? (
+          <div className="text-gray-400 p-3 text-start">{code.description}</div>
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </main>
   );

@@ -12,21 +12,21 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="h-screen w-full  ">
-      <div className="text-center flex flex-col sm:py-4">
+    <div className="h-full w-full  ">
+      <div className="text-center flex flex-col py-4">
 
         <span className="text-gray-400 relative">
   
           <span className="border-b border-lightpink text-6xl">Welc</span>
-        <span className="text-6xl">ome to </span> <span className="text-6xl text-white"> myCode</span>
+        <span className="text-6xl">ome to </span> <span className="text-6xl text-white "> myCode</span>
         </span>
 
-        <span className="text-gray-400 text-bold text-xl sm:pt-5">
+        <span className="text-gray-400 text-bold text-xl  pt-5">
           Where Your Code Finds a Home{" "}
         </span>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 sm:py-5  ">
+      <div className="grid sm:grid-cols-3 grid-cols-2 gap-4 py-5 px-4 ">
         {messages.map((message, id) => (
           <span
             key={id}
