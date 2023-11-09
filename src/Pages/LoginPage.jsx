@@ -30,14 +30,14 @@ const LoginPage = () => {
 
   return (
     <div className=" h-screen w-screen  bg-backg  ">
-      <div className="h-full w-full sm:pt-20 sm:pb-35 flex justify-center ">
-        <div className="bg-gray-100 border rounded-md sm:w-96 sm:mb-40  w-full px-7">
-          <div className="text-2xl font-bold mt-10 mx-2 text-textcolor ">
+      <div className="h-full w-full sm:pt-20 sm:pb-35 flex justify-center  ">
+        <div className="bg-gray-100 border rounded-md sm:w-96 sm:mb-40    w-full px-7  border-lightpink    ">
+          <div className="text-2xl font-bold mt-10 mx-2 text-gray-600 ">
             {headerInstruction}
           </div>
-          <div className="border bg-background mt-4  " />
+          <div className="border border-lightpink mt-4  " />
 
-          <form className="flex flex-col mx-2 mt-10  " onSubmit={handleSubmit}>
+          <form className="flex flex-col mx-2 mt-10 sm:pb-60  " onSubmit={handleSubmit}>
             <input
               className="p-3 rounded-lg bg-background mb-3 text-xs"
               placeholder="Email"
@@ -56,7 +56,7 @@ const LoginPage = () => {
             />
             <div className="flex justify-center items-center flex-col pt-3 ">
               <button
-                className="w-1/3 bg-mygreen text-gray-700 font-bold rounded-md p-3 mt-6 text-xs transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out"
+                className="w-1/3 bg-lightpink text-gray-700 font-bold  rounded-md p-3 mt-6 text-xs transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out"
                 type="submit"
                 disabled={isLoading}
               >
@@ -66,7 +66,7 @@ const LoginPage = () => {
                 <Link to="/signup">
                   <span className="px-4 text-gray-400 text-xs pt-3">
                     Don't have an account yet'{" "}
-                    <span className=" hover:text-mygreen">Sign Up </span>
+                    <span className=" hover:text-lightpink">Sign Up </span>
                   </span>
                 </Link>
               </div>
