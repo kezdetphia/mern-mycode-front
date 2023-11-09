@@ -36,8 +36,8 @@ const LandingPage = () => {
 
 
   return (
-    <div className="h-full w-full">
-      <div className="text-center flex sm:flex-col sm:py-40">
+    <div className="h-full w-full flex flex-col md:bg-green-800 lg:bg-yellow-700 xl:bg-red-800 ">
+      <div className="text-center flex flex-col sm:flex-col py-10 px-3 sm:py-40">
         <span className="text-gray-400 relative">
           <span className="border-b border-lightpink text-6xl">Welc</span>
           <span className="text-6xl">ome to </span>{" "}
@@ -47,48 +47,58 @@ const LandingPage = () => {
         <span className="text-white text-bold text-xl  pt-5">
           Where Your Code Finds a Home{" "}
         </span>
-        <span className="text-4xl text-gray-400 pt-6 px-3">
+        <span className="text-xl sm:text-4xl text-gray-400 pt-6 px-3">
           Effortlessly store your code snippets for easy access when you need
           them, making your coding journey smoother and more efficient.
         </span>
-        <div className='sm:pt-36'>
-          <Link to='/login' className='bg-lightpink rounded-md px-3 py-1 text-gray-800 hover:bg-mediumpink mr-1'>Login</Link>
-          <Link to='/signup' className='bg-lightpink rounded-md px-3 py-1 text-gray-800 hover:bg-mediumpink ml-1'>Sign Up</Link>
+        <div className="sm:pt-36 pt-20">
+          <Link
+            to="/login"
+            className="bg-lightpink rounded-md px-3 py-1 text-gray-800 hover:bg-mediumpink mr-1"
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="bg-lightpink rounded-md px-3 py-1 text-gray-800 hover:bg-mediumpink ml-1"
+          >
+            Sign Up
+          </Link>
         </div>
       </div>
 
-      <div className="sm:pt-58 md:pt-50 lg:pt-32 ">
-        <div className="text-center">
+      <div className="sm:pt-58 md:pt-50 lg:pt-30 xl:pt-31  ">
+        <div className="text-center flex flex-col ">
+          <span className="text-gray-100 text-2xl pr-2 ">
+            What's Inside myCode?
+          </span>
           <span className="text-gray-400 text-xl">
-            <span className="text-gray-100 text-2xl pr-2 ">
-              What's Inside myCode?
-            </span>{" "}
             Your Key to Effortless Code Management.
           </span>
         </div>
 
-        <div className="flex sm:pt-10">
-          <div className="w-1/2">
-            <div className="grid sm:grid-cols-3 grid-cols-2 gap-4 py-5 px-4  ">
+        <div className="flex sm:pt-20 flex-col">
+          <div className=" text-gray-400 text-lg ">
+            <div className="p-4 leading-relaxed tracking-wide text-center">
+              <span>{descWithLineBreaks} </span>
+            </div>
+          </div>
+
+          <div className=" ">
+            <div className="grid sm:grid-cols-2 grid-cols-2 xl:grid-cols-3 gap-4 py-5 px-4  ">
               {Object.entries(messagesWithTitles).map(
                 ([titles, messages], id) => (
                   <div
                     key={id}
-                    className="border rounded-2xl border-darkpink p-2 flex flex-col justify-center  text-start bg-search hover:bg-backg text-gray-400 text-md transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out "
+                    className="border rounded-2xl border-darkpink p-2 flex flex-col justify-center text-start bg-search hover:bg-backg text-gray-400 text-md transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out "
                   >
-                    <h2 className="text-lg font-semibold py-2  text-gray-200 text-start">
+                    <h2 className="text-lg font-semibold py-2  text-gray-200 text-start ">
                       {titles}
                     </h2>
-                    <p className="pb-2">{messages}</p>
+                    <p className="pb-2 ">{messages}</p>
                   </div>
                 )
               )}
-            </div>
-          </div>
-
-          <div className="w-1/2 text-gray-400 text-lg ">
-            <div className="p-4 leading-relaxed tracking-wide">
-              <span>{descWithLineBreaks} </span>
             </div>
           </div>
         </div>
