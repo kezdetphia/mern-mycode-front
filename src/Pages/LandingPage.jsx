@@ -1,4 +1,4 @@
-import React from "react";
+import {Link} from 'react-router-dom'
 
 const LandingPage = () => {
   const messages = [
@@ -47,13 +47,17 @@ const LandingPage = () => {
         <span className="text-white text-bold text-xl  pt-5">
           Where Your Code Finds a Home{" "}
         </span>
-        <span className="text-4xl text-gray-400 pt-10">
+        <span className="text-4xl text-gray-400 pt-6 px-3">
           Effortlessly store your code snippets for easy access when you need
           them, making your coding journey smoother and more efficient.
         </span>
+        <div className='sm:pt-36'>
+          <Link to='/login' className='bg-lightpink rounded-md px-3 py-1 text-gray-800 hover:bg-mediumpink mr-1'>Login</Link>
+          <Link to='/signup' className='bg-lightpink rounded-md px-3 py-1 text-gray-800 hover:bg-mediumpink ml-1'>Sign Up</Link>
+        </div>
       </div>
 
-      <div className="sm:pt-32 ">
+      <div className="sm:pt-58 md:pt-50 lg:pt-32 ">
         <div className="text-center">
           <span className="text-gray-400 text-xl">
             <span className="text-gray-100 text-2xl pr-2 ">

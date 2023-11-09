@@ -27,35 +27,35 @@ const CodeForm = () => {
   }
 
   // Update editor size when the window is resized
-  useEffect(() => {
-    const handleResize = () => {
-      if (editorRef.current) {
-        const container = editorRef.current.getDomNode().parentElement;
-        if (container) {
-          // Calculate the available width and height within the container
-          const availableWidth = container.clientWidth;
-          const availableHeight = window.innerHeight - container.offsetTop; // You may adjust this calculation
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (editorRef.current) {
+  //       const container = editorRef.current.getDomNode().parentElement;
+  //       if (container) {
+  //         // Calculate the available width and height within the container
+  //         const availableWidth = container.clientWidth;
+  //         const availableHeight = window.innerHeight - container.offsetTop; // You may adjust this calculation
 
-          // Set the editor's dimensions
-          editorRef.current.layout({
-            width: availableWidth,
-            height: availableHeight,
-          });
-        }
-      }
-    };
+  //         // Set the editor's dimensions
+  //         editorRef.current.layout({
+  //           width: availableWidth,
+  //           height: availableHeight,
+  //         });
+  //       }
+  //     }
+  //   };
 
-    // Attach the resize listener
-    window.addEventListener("resize", handleResize);
+  //   // Attach the resize listener
+  //   window.addEventListener("resize", handleResize);
 
-    // Call it initially to set the correct size
-    handleResize();
+  //   // Call it initially to set the correct size
+  //   handleResize();
 
-    // Clean up the listener when the component unmounts
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   // Clean up the listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   // Function to update code data when input fields change
   const handleInputChange = (e) => {
@@ -181,9 +181,9 @@ const CodeForm = () => {
           </button>
         )}
 
-        <div className="flex sm:w-full sm:h-full   ">
+        <div className="flex   ">
           <Editor
-            className="sm:h-[550px] h-[200px]"
+            className="sm:h-[400px] md:h-[400px] xl:h-[750px] h-[150px]"
             name="code"
             value={code.code}
             theme="vs-dark"
