@@ -30,14 +30,14 @@ const LoginPage = () => {
 
   return (
     <div className=" h-screen w-screen  bg-backg  ">
-      <div className="h-full w-full sm:pt-20 flex justify-center ">
+      <div className="h-full w-full sm:pt-20 sm:pb-35 flex justify-center ">
         <div className="bg-gray-100 border rounded-md sm:w-96 sm:mb-40  w-full px-7">
           <div className="text-2xl font-bold mt-10 mx-2 text-textcolor ">
             {headerInstruction}
           </div>
           <div className="border bg-background mt-4  " />
 
-          <form className="flex flex-col mx-2 my-10  " onSubmit={handleSubmit}>
+          <form className="flex flex-col mx-2 mt-10  " onSubmit={handleSubmit}>
             <input
               className="p-3 rounded-lg bg-background mb-3 text-xs"
               placeholder="Email"
@@ -63,7 +63,7 @@ const LoginPage = () => {
                 Login
               </button>
               <div className="flex items-center text-md pt-1 hover:text-highlight ">
-                <Link to="/login">
+                <Link to="/signup">
                   <span className="px-4 text-gray-400 text-xs pt-3">
                     Don't have an account yet'{" "}
                     <span className=" hover:text-mygreen">Sign Up </span>

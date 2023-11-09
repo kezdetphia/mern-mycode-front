@@ -33,7 +33,7 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="flex justify-center h-screen sm:pt-20 sm:pb-60  bg-backg  ">
+    <div className="flex justify-center h-screen sm:pt-20 sm:pb-40  bg-backg  ">
       <div className="bg-gray-100 border rounded-md sm:w-96  w-full px-7 ">
         <div className="text-2xl font-bold mt-10 mx-2 ">
           {headerInstruction}
