@@ -12,7 +12,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="h-full w-full  ">
+    <div className="h-screen w-full  ">
       <div className="text-center flex flex-col py-4">
 
         <span className="text-gray-400 relative">

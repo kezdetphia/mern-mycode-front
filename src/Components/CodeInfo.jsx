@@ -58,15 +58,15 @@ const CodeInfo = ({ code }) => {
     <div className="flex flex-col m-10 mx-5   ">
       <Link to={`/${code._id}`}>
         <div className=" transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out">
-          <div className="w-full  bg-search text-gray-300 rounded-md">
-            <div className="flex py-2 justify-between">
-              <div className="flex pl-3 ">
+          <div className="w-full  bg-search text-gray-300 rounded-md flex flex-col">
+            <div className="flex sm:flex-row flex-col py-2 justify-between">
+              <div className="flex pl-3  sm:flex-row flex-col">
                 <span>{code.language}</span>
-                <span className="pl-3">{code.title}</span>
+                <span className="sm:pl-3">{code.title}</span>
               </div>
 
-              <div className="flex ">
-                <span className="text-gray-300 pr-4">
+              <div className="flex justify-between ">
+                <span className="text-gray-300 sm:pr-4 pl-3 sm:pl-0 ">
                   {formatDistanceToNow(new Date(code.createdAt), {
                     addSuffix: true,
                   })}
