@@ -22,8 +22,6 @@ const CodeInfo = ({ code }) => {
     // Try deleting the ID of code from database
     try {
       console.log(code._id);
-      // `http://localhost:4000/api/codes/${code._id}`
-      
       const res = await fetch(
         `https://mern-code-back.onrender.com/api/code/${code._id}`,
         {

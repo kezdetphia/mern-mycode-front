@@ -39,6 +39,7 @@ function App() {
     };
 
     if (user) fetchCodes();
+    // Run fetch if user changes or a dispatch is being called
   }, [dispatch, user]);
 
   return (
