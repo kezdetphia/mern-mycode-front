@@ -14,7 +14,6 @@ import CodeDetails from "./Pages/CodeDetails";
 import LandingPage from "./Pages/LandingPage";
 
 
-
 function App() {
   const { user } = useAuthContext();
   const { dispatch, codes } = useCodesContext();
