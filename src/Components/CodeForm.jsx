@@ -153,7 +153,7 @@ const CodeForm = () => {
           </button>
         )}
 
-        <div className="flex   ">
+        <div className="flex  ">
           <Editor
             className="sm:h-[400px] md:h-[400px] xl:h-[750px] h-[150px]"
             name="code"
