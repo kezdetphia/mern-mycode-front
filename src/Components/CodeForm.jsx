@@ -26,37 +26,6 @@ const CodeForm = () => {
     editorRef.current = editor;
   }
 
-  // Update editor size when the window is resized
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (editorRef.current) {
-  //       const container = editorRef.current.getDomNode().parentElement;
-  //       if (container) {
-  //         // Calculate the available width and height within the container
-  //         const availableWidth = container.clientWidth;
-  //         const availableHeight = window.innerHeight - container.offsetTop; // You may adjust this calculation
-
-  //         // Set the editor's dimensions
-  //         editorRef.current.layout({
-  //           width: availableWidth,
-  //           height: availableHeight,
-  //         });
-  //       }
-  //     }
-  //   };
-
-  //   // Attach the resize listener
-  //   window.addEventListener("resize", handleResize);
-
-  //   // Call it initially to set the correct size
-  //   handleResize();
-
-  //   // Clean up the listener when the component unmounts
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
   // Function to update code data when input fields change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -76,14 +45,17 @@ const CodeForm = () => {
         code: editorRef.current.getValue(),
       };
 
-      const res = await fetch("https://mern-workout-back.onrender.com/api/codes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-        body: JSON.stringify(updatedCode),
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_LIVE}/api/codes`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+          body: JSON.stringify(updatedCode),
+        }
+      );
       const resJson = await res.json();
 
       if (!res.ok) {

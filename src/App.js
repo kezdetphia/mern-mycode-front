@@ -23,8 +23,8 @@ function App() {
   useEffect(() => {
     const fetchCodes = async () => {
       const response = await fetch(
-        // `https://mern-workout-back.onrender.com/api/codes`
-        "https://mern-workout-back.onrender.com/api/codes",
+        `${process.env.REACT_APP_BACKEND_LIVE}/api/codes`,
+        // "https://mern-workout-back.onrender.com/api/codes",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

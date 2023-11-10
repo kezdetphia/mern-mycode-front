@@ -9,6 +9,7 @@ const Navbar = () => {
   const title = '<myCode />'
 
   const handleLogout = () => {
+    // logout from useLogout hook
     logout();
   };
 

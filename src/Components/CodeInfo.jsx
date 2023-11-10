@@ -19,11 +19,11 @@ const CodeInfo = ({ code }) => {
   const handleClick = async () => {
     // if no user don't even bother executing
     if (!user) return;
-    // Try deleting the ID of code from database
+    // Try deleting the ID of code from database 
     try {
       console.log(code._id);
       const res = await fetch(
-        `https://mern-code-back.onrender.com/api/code/${code._id}`,
+        `${process.env.REACT_APP_BACKEND_LIVE}/api/codes/${code._id}`,
         {
           method: "DELETE",
           headers: {

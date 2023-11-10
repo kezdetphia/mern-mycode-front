@@ -12,14 +12,11 @@ const HomeCode = () => {
 
   useEffect(() => {
     const fetchCodes = async () => {
-      const response = await fetch(
-        `https://mern-workout-back.onrender.com/api/codes`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_LIVE}/api/codes`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       const data = await response.json();
 
       if (response.ok) {

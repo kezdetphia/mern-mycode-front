@@ -28,7 +28,7 @@ const CodeDetail = () => {
 
       try {
         const response = await fetch(
-          `https://mern-workout-back.onrender.com/api/codes/${id}`,
+          `${process.env.REACT_APP_BACKEND_LIVE}/api/codes/${id}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,

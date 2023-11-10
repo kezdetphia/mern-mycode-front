@@ -13,7 +13,7 @@ export const useSignup = () => {
 
     try{
       const response = await fetch(
-        "https://mern-workout-back.onrender.com/api/users/signup",
+        `${process.env.REACT_APP_BACKEND_LIVE}/api/users/signup`,
         {
           method: "POST",
           headers: {
