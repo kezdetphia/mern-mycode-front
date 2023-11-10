@@ -28,7 +28,7 @@ const HomeCode = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="Home h-screen bg-backg flex flex-col sm:flex-col md:flex-col xl:flex-row space-between ">
+    <div className="Home h-full bg-backg flex flex-col sm:flex-col md:flex-col xl:flex-row space-between ">
       <div className=" flex justify-center  lg:max-w-4xl   ">
         <CodeForm />
       </div>

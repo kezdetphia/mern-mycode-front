@@ -116,7 +116,7 @@ const CodeForm = () => {
       <div className=" ">
         <div className="flex sm:flex-row flex-col space-y-2 ">
           <select
-            className="bg-urllink text-gray-500 justify-center flex items-center py-2 rounded-lg pl-2 mt-2  "
+            className="bg-urllink text-gray-500 justify-center flex items-center py-2 rounded-lg pl-2 mt-2 w-full  "
             name="language"
             // placeholder="Language"
             value={code.language}
@@ -130,14 +130,14 @@ const CodeForm = () => {
           </select>
 
           <input
-            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 py-1 sm:ml-2"
+            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 py-1 sm:ml-2 w-full"
             name="title"
             placeholder="Name"
             value={code.title}
             onChange={handleInputChange}
           />
           <input
-            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 py-1 sm:ml-2 "
+            className="bg-urllink placeholder-gray-500  text-gray-400 rounded-lg pl-2 py-1 sm:ml-2 w-full "
             name="description"
             placeholder="Description"
             value={code.description}
