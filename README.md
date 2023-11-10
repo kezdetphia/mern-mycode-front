@@ -3,7 +3,7 @@
 
 ## 🌐 Project Overview
 
-Welcome to myCode, a full-stack MERN application designed to streamline the storage and retrieval of code snippets. Tailored for programmers of all levels, myCode offers a secure platform for efficient code management. The backend is hosted on [GitHub](https://github.com/kezdetphia/mern-mycode-back), and the frontend is live on [Netlify](https://deluxe-froyo-98610e.netlify.app/).
+Welcome to myCode, a full-stack MERN application designed to streamline the storage and retrieval of code snippets. Tailored for programmers of all levels, myCode offers a secure platform for efficient code management. The backend is hosted on [GitHub](https://github.com/kezdetphia/mern-mycode-back), and deployed it to [Render.com] and the frontend is live on [Netlify](https://deluxe-froyo-98610e.netlify.app/).
 
 ## 🚀 Features
 
