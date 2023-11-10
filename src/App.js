@@ -24,7 +24,7 @@ function App() {
     const fetchCodes = async () => {
       const response = await fetch(
         // `https://mern-workout-back.onrender.com/api/codes`
-        "http://localhost:4000/api/codes",
+        "https://mern-workout-back.onrender.com/api/codes",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

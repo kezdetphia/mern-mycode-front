@@ -27,11 +27,14 @@ const CodeDetail = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:4000/api/codes/${id}`, {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const response = await fetch(
+          `https://mern-workout-back.onrender.com/api/codes/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
 
         if (response.ok) {
           const codeData = await response.json();
@@ -54,12 +57,15 @@ const CodeDetail = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:4000/api/codes/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        `https://mern-workout-back.onrender.com/api/codes/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       if (response.ok) {
         const responseCodes = await response.json();
         dispatch({ type: "DELETE_CODE", payload: responseCodes });

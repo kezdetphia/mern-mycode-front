@@ -76,7 +76,7 @@ const CodeForm = () => {
         code: editorRef.current.getValue(),
       };
 
-      const res = await fetch("http://localhost:4000/api/codes", {
+      const res = await fetch("https://mern-workout-back.onrender.com/api/codes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
