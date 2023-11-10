@@ -46,25 +46,19 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route
-            path="/"
-            element={user ? <HomeCode /> : <Navigate to="/login" />}
-          />
+          <Route path="/" element={user ? <HomeCode /> : <LandingPage />} />
+
           <Route
             path="/signup"
-            element={!user ? <SignupPage /> : <Navigate to="/" />}
+            element={user ? <Navigate to="/" /> : <SignupPage />}
           />
+
           <Route
             path="/login"
-            element={!user ? <LoginPage /> : <Navigate to="/" />}
+            element={user ? <Navigate to="/" /> : <LoginPage />}
           />
 
-          {/* <Route path="/incdec" element={<UseReducerPractice />} /> */}
-
           <Route path="/:id" element={<CodeDetails />} />
-
-          <Route path="/landing" element={<LandingPage />} />
-          
         </Routes>
       </BrowserRouter>
     </div>

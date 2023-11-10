@@ -36,7 +36,7 @@ const HomeCode = () => {
       <div className=" flex justify-center  lg:max-w-4xl   ">
         <CodeForm />
       </div>
-      <div className="codes p-5 pt-5 sm:pt-0  w-full overflow-scroll lg:max-w-4xl ">
+      <div className="codes p-5 pt-5 sm:pt-0  w-full overflow-scroll lg:max-w-4xl xl:max-w-full ">
         {codes &&
           codes.map((code) => <CodeInfo key={code._id} code={code} />)}
       </div>

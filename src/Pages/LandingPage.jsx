@@ -36,7 +36,7 @@ const LandingPage = () => {
 
 
   return (
-    <div className="h-full w-full flex flex-col md:bg-green-800 lg:bg-yellow-700 xl:bg-red-800 ">
+    <div className="h-full w-full flex flex-col bg-backg ">
       <div className="text-center flex flex-col sm:flex-col py-10 px-3 sm:py-40">
         <span className="text-gray-400 relative">
           <span className="border-b border-lightpink text-6xl">Welc</span>
@@ -85,17 +85,17 @@ const LandingPage = () => {
           </div>
 
           <div className=" ">
-            <div className="grid sm:grid-cols-2 grid-cols-2 xl:grid-cols-3 gap-4 py-5 px-4  ">
+            <div className="grid grid-cols-1  sm:grid-cols-2  xl:grid-cols-3 gap-5 py-5 px-4  ">
               {Object.entries(messagesWithTitles).map(
                 ([titles, messages], id) => (
                   <div
                     key={id}
-                    className="border rounded-2xl border-darkpink p-2 flex flex-col justify-center text-start bg-search hover:bg-backg text-gray-400 text-md transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out "
+                    className="border rounded-2xl border-lightpink p-2 flex flex-col justify-center text-start bg-search hover:bg-backg text-gray-400 text-md transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out "
                   >
-                    <h2 className="text-lg font-semibold py-2  text-gray-200 text-start ">
+                    <h2 className="text-lg font-semibold py-2  text-gray-200 sm:text-start text-center ">
                       {titles}
                     </h2>
-                    <p className="pb-2 ">{messages}</p>
+                    <p className="pb-2 sm:text-start text-center ">{messages}</p>
                   </div>
                 )
               )}
