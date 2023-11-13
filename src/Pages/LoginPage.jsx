@@ -10,9 +10,6 @@ const LoginPage = () => {
 
   const [loginForm, setLoginForm] = useState(intialForm);
 
-  const [headerInstruction, setHeaderInstruction] =
-    useState("Login with email");
-
   const { login, error, isLoading } = useLogin();
 
   const handleChange = (e) => {
@@ -33,11 +30,14 @@ const LoginPage = () => {
       <div className="h-full w-full sm:pt-20 sm:pb-35 flex justify-center  ">
         <div className="bg-gray-100 border rounded-md sm:w-96 sm:mb-40    w-full px-7  border-lightpink    ">
           <div className="text-2xl font-bold mt-10 mx-2 text-gray-600 ">
-            {headerInstruction}
+            Login with email
           </div>
           <div className="border border-lightpink mt-4  " />
 
-          <form className="flex flex-col mx-2 mt-10 sm:pb-60  " onSubmit={handleSubmit}>
+          <form
+            className="flex flex-col mx-2 mt-10 sm:pb-60  "
+            onSubmit={handleSubmit}
+          >
             <input
               className="p-3 rounded-lg bg-background mb-3 text-xs"
               placeholder="Email"
@@ -65,7 +65,7 @@ const LoginPage = () => {
               <div className="flex items-center text-md pt-1 hover:text-highlight ">
                 <Link to="/signup">
                   <span className="px-4 text-gray-400 text-xs pt-3">
-                    Don't have an account yet'{" "}
+                    Don't have an account yet?{" "}
                     <span className=" hover:text-lightpink">Sign Up </span>
                   </span>
                 </Link>

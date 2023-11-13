@@ -10,9 +10,6 @@ const SignupPage = () => {
 
   const [signupForm, setSignupForm] = useState(intialForm);
 
-  const [headerInstruction, setHeaderInstruction] =
-    useState("Create an account");
-
   const {
     signup,
     error,
@@ -36,7 +33,7 @@ const SignupPage = () => {
     <div className="flex justify-center h-screen sm:pt-20 sm:pb-40  bg-backg  ">
       <div className="bg-gray-100 border rounded-md sm:w-96  w-full px-7 ">
         <div className="text-2xl text-gray-600 font-bold mt-10 mx-2 ">
-          {headerInstruction}
+          "Create an account"
         </div>
         <div className="border border-lightpink mt-4" />
 
