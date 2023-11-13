@@ -28,7 +28,7 @@ const LoginPage = () => {
   return (
     <div className=" h-screen w-screen  bg-backg  ">
       <div className="h-full w-full sm:pt-20 sm:pb-35 flex justify-center  ">
-        <div className="bg-gray-100 border rounded-md sm:w-96 sm:mb-40    w-full px-7  border-lightpink    ">
+        <div className="bg-gray-100 border rounded-md sm:w-96 sm:mb-40    w-full px-7 shadow-[inset_10px_0px_200px_] shadow-lightpink    ">
           <div className="text-2xl font-bold mt-10 mx-2 text-gray-600 ">
             Login with email
           </div>

@@ -31,9 +31,9 @@ const SignupPage = () => {
 
   return (
     <div className="flex justify-center h-screen sm:pt-20 sm:pb-40  bg-backg  ">
-      <div className="bg-gray-100 border rounded-md sm:w-96  w-full px-7 ">
+      <div className="bg-gray-100 border rounded-md sm:w-96  w-full px-7 shadow-[inset_10px_0px_200px_] shadow-lightpink ">
         <div className="text-2xl text-gray-600 font-bold mt-10 mx-2 ">
-          "Create an account"
+          Create an account
         </div>
         <div className="border border-lightpink mt-4" />
 
@@ -61,8 +61,8 @@ const SignupPage = () => {
               type="submit"
               disabled={isLoading}
             >
-              {isLoading ? 'Signing up...' : 'Sign Up'}
-            </button> 
+              {isLoading ? "Signing up..." : "Sign Up"}
+            </button>
             <div className="flex items-center text-md pt-1 hover:text-highlight ">
               <Link to="/login">
                 <span className="px-4 text-gray-400 text-xs pt-3">
