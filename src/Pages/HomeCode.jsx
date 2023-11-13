@@ -29,10 +29,10 @@ const HomeCode = () => {
 
   return (
     <div className="Home h-full bg-backg flex flex-col sm:flex-col md:flex-col lg:flex-col xl:flex-col 2xl:flex-row space-between ">
-      <div className=" flex justify-center  lg:w-full 2xl:max-w-5xl lg:px-10  ">
+      <div className=" flex  justify-center  lg:w-full 2xl:max-w-5xl lg:px-10  ">
         <CodeForm />
       </div>
-      <div className="codes p-5 pt-5 sm:pt-0  w-full overflow-scroll lg:w-full xl:max-w-full ">
+      <div className="codes h-screen p-5 pt-5 sm:pt-0  w-full  overflow-scroll lg:w-full xl:max-w-full ">
         {codes &&
           codes.map((code) => <CodeInfo key={code._id} code={code} />)}
       </div>
