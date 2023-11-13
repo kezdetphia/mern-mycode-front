@@ -61,8 +61,8 @@ const SignupPage = () => {
               type="submit"
               disabled={isLoading}
             >
-              Sign Up
-            </button>
+              {isLoading ? 'Signing up...' : 'Sign Up'}
+            </button> 
             <div className="flex items-center text-md pt-1 hover:text-highlight ">
               <Link to="/login">
                 <span className="px-4 text-gray-400 text-xs pt-3">
