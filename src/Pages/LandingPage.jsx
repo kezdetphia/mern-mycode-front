@@ -54,13 +54,13 @@ const LandingPage = () => {
         <div className="sm:pt-36 pt-20">
           <Link
             to="/login"
-            className="bg-lightpink rounded-md px-3 py-1 text-gray-800 hover:bg-mediumpink mr-1"
+            className="bg-lightpink rounded-md px-3 py-1 sm:px-10 sm:py-2 text-gray-800 hover:bg-mediumpink mr-1"
           >
             Login
           </Link>
           <Link
             to="/signup"
-            className="bg-lightpink rounded-md px-3 py-1 text-gray-800 hover:bg-mediumpink ml-1"
+            className="bg-lightpink rounded-md px-3 py-1 sm:px-9 sm:py-2 text-gray-800 hover:bg-mediumpink ml-1"
           >
             Sign Up
           </Link>
@@ -90,12 +90,14 @@ const LandingPage = () => {
                 ([titles, messages], id) => (
                   <div
                     key={id}
-                    className="border rounded-2xl border-lightpink p-2 flex flex-col justify-center text-start bg-search hover:bg-backg text-gray-400 text-md transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out "
+                    className="border rounded-2xl border-lightpink p-2 flex flex-col justify-center text-start bg-search hover:bg-backg text-gray-400 text-md  "
                   >
                     <h2 className="text-lg font-semibold py-2  text-gray-200 sm:text-start text-center ">
                       {titles}
                     </h2>
-                    <p className="pb-2 sm:text-start text-center ">{messages}</p>
+                    <p className="pb-2 sm:text-start text-center ">
+                      {messages}
+                    </p>
                   </div>
                 )
               )}
