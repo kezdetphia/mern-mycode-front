@@ -57,7 +57,7 @@ const LoginPage = () => {
 
             <div className="flex justify-center items-center flex-col pt-3 ">
               <button
-                className="w-1/3 bg-lightpink text-gray-700 font-bold rounded-md p-3 mt-6 text-xs transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out"
+                className="w-1/3 bg-lightpink text-gray-700 font-bold rounded-md p-3 mt-6 text-xs transform scale-100 hover:scale-105 transition-transform duration-300 ease-in-out "
                 type="submit"
                 disabled={isLoading}
               >

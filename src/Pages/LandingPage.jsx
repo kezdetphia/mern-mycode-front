@@ -51,16 +51,18 @@ const LandingPage = () => {
           Effortlessly store your code snippets for easy access when you need
           them, making your coding journey smoother and more efficient.
         </span>
-        <div className="sm:pt-36 pt-20">
+        <div className="sm:pt-36 pt-20 ">
           <Link
             to="/login"
-            className="bg-lightpink rounded-md px-3 py-1 sm:px-10 sm:py-2 text-gray-800 hover:bg-mediumpink mr-1"
+            className="mr-1 border border-mediumpink shadow-md shadow-lightpink rounded-md px-3 py-1 sm:px-9 sm:py-2 text-gray-300 transition-shadow hover:shadow-mediumpink"
           >
+            {" "}
             Login
           </Link>
           <Link
             to="/signup"
-            className="bg-lightpink rounded-md px-3 py-1 sm:px-9 sm:py-2 text-gray-800 hover:bg-mediumpink ml-1"
+            // className=" rounded-md px-3 py-1 sm:px-9 sm:py-2 text-gray-600 hover:bg-mediumpink ml-1 bg-gradient-to-r from-gray-200 to-lightpink transition-all duration-300 ease-in-out hover:from-gray-50 hover:to-lightpink transform hover:scale-105"
+            className="ml-1 border border-mediumpink shadow-md shadow-lightpink rounded-md px-3 py-1 sm:px-9 sm:py-2 text-gray-300 transition-shadow hover:shadow-mediumpink"
           >
             Sign Up
           </Link>
